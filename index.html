@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Getting Started with Hermes Agent — A Guide for NGO Professionals</title>
+<title>Offline AI Agent Setup — Local LLM + Hermes + Holographic Memory</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -36,7 +36,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -47,167 +46,90 @@
     font-size: 16px;
   }
 
-  /* ── Sidebar ── */
   .sidebar {
-    position: fixed;
-    top: 0; left: 0;
-    width: 270px;
-    height: 100vh;
+    position: fixed; top: 0; left: 0;
+    width: 270px; height: 100vh;
     background: var(--surface);
     border-right: 1px solid var(--border);
     overflow-y: auto;
-    padding: 28px 20px;
-    z-index: 100;
+    padding: 28px 20px; z-index: 100;
     transition: transform .3s ease;
   }
   .sidebar-logo {
-    font-size: 1.15rem;
-    font-weight: 700;
+    font-size: 1.1rem; font-weight: 700;
     color: var(--accent);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 22px;
   }
-  .sidebar-logo span { font-size: 1.4rem; }
+  .sidebar-logo span { font-size: 1.3rem; }
   .sidebar nav a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    border-radius: var(--radius-sm);
-    color: var(--text2);
-    text-decoration: none;
-    font-size: .875rem;
-    font-weight: 500;
-    transition: all .15s ease;
-    margin-bottom: 2px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 12px; border-radius: var(--radius-sm);
+    color: var(--text2); text-decoration: none;
+    font-size: .85rem; font-weight: 500;
+    transition: all .15s ease; margin-bottom: 2px;
   }
-  .sidebar nav a:hover,
-  .sidebar nav a.active {
-    background: var(--accent-light);
-    color: var(--accent);
-  }
+  .sidebar nav a:hover, .sidebar nav a.active { background: var(--accent-light); color: var(--accent); }
   .sidebar nav a .emoji { font-size: 1rem; flex-shrink: 0; }
   .sidebar .nav-label {
-    font-size: .7rem;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--text3);
-    font-weight: 600;
-    padding: 16px 12px 6px;
+    font-size: .68rem; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--text3);
+    font-weight: 600; padding: 14px 12px 5px;
   }
   .sidebar-toggle {
-    display: none;
-    position: fixed;
-    top: 14px; left: 14px;
-    z-index: 200;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 8px 12px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    line-height: 1;
-    color: var(--text);
+    display: none; position: fixed; top: 14px; left: 14px;
+    z-index: 200; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 8px 12px; font-size: 1.2rem; cursor: pointer;
+    box-shadow: var(--shadow); line-height: 1; color: var(--text);
   }
-  .sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.6);
-    z-index: 99;
-  }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 99; }
 
-  /* ── Main ── */
-  .main {
-    margin-left: 270px;
-    max-width: 880px;
-    padding: 50px 56px 80px;
-  }
+  .main { margin-left: 270px; max-width: 920px; padding: 50px 56px 80px; }
 
-  /* ── Hero ── */
-  .hero {
-    margin-bottom: 48px;
-    padding-bottom: 32px;
-    border-bottom: 2px solid var(--border);
-  }
+  .hero { margin-bottom: 44px; padding-bottom: 28px; border-bottom: 2px solid var(--border); }
   .hero .badge {
-    display: inline-block;
-    background: var(--accent-light);
-    color: var(--accent);
-    font-size: .75rem;
-    font-weight: 600;
-    padding: 3px 12px;
-    border-radius: 999px;
-    margin-bottom: 12px;
-    letter-spacing: .02em;
+    display: inline-block; background: var(--accent-light); color: var(--accent);
+    font-size: .75rem; font-weight: 600; padding: 3px 12px;
+    border-radius: 999px; margin-bottom: 10px;
   }
-  .hero h1 {
-    font-size: 2.4rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -.03em;
-    margin-bottom: 12px;
-    color: var(--text);
+  .hero .specs {
+    display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 8px;
   }
-  .hero h1 span { color: var(--accent); }
-  .hero p {
-    font-size: 1.1rem;
-    color: var(--text2);
-    max-width: 620px;
-    line-height: 1.7;
-  }
-
-  /* ── Sections ── */
-  section { margin-bottom: 52px; }
-  section h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -.02em;
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  section h2 .emoji { font-size: 1.3rem; }
-  section > p.sub {
-    color: var(--text2);
-    margin-bottom: 24px;
-    font-size: .95rem;
-  }
-
-  /* ── Cards ── */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-  .card {
-    background: var(--surface);
+  .hero .specs .chip {
+    font-size: .7rem; font-weight: 600;
+    padding: 3px 10px; border-radius: 999px;
+    background: var(--surface2); color: var(--text2);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px 22px;
-    box-shadow: var(--shadow);
-    transition: box-shadow .2s ease, transform .2s ease;
+  }
+  .hero .specs .chip.highlight { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; letter-spacing: -.03em; margin-bottom: 8px; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { font-size: 1.05rem; color: var(--text2); max-width: 650px; line-height: 1.7; }
+
+  section { margin-bottom: 48px; }
+  section h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+  section h2 .emoji { font-size: 1.2rem; }
+  section > p.sub { color: var(--text2); margin-bottom: 20px; font-size: .92rem; }
+  section h3 { font-size: 1.05rem; font-weight: 600; margin: 18px 0 6px; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-bottom: 20px; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 20px;
+    box-shadow: var(--shadow); transition: box-shadow .2s ease, transform .2s ease;
   }
   .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .card .icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
-  .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
-  .card p { font-size: .875rem; color: var(--text2); line-height: 1.55; }
+  .card .icon { font-size: 1.5rem; margin-bottom: 6px; display: block; }
+  .card h3 { font-size: .95rem; font-weight: 600; margin-bottom: 3px; }
+  .card p { font-size: .85rem; color: var(--text2); line-height: 1.55; }
+  .card .detail { font-size: .78rem; color: var(--text3); margin-top: 4px; }
 
-  /* ── Callout ── */
   .callout {
-    background: var(--accent-light);
-    border-left: 4px solid var(--accent);
-    border-radius: var(--radius-sm);
-    padding: 16px 20px;
-    margin-bottom: 20px;
-    font-size: .9rem;
-    color: var(--text);
-    line-height: 1.6;
+    background: var(--accent-light); border-left: 4px solid var(--accent);
+    border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 18px;
+    font-size: .88rem; color: var(--text); line-height: 1.6;
   }
   .callout strong { color: var(--accent); }
   .callout.warn { background: var(--orange-light); border-color: var(--orange); }
@@ -217,675 +139,686 @@
   .callout.purple { background: var(--purple-light); border-color: var(--purple); }
   .callout.purple strong { color: var(--purple); }
 
-  /* ── Steps ── */
-  .steps { counter-reset: step; margin-bottom: 20px; }
-  .step {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-    align-items: flex-start;
-  }
+  .steps { counter-reset: step; margin-bottom: 14px; }
+  .step { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
   .step-num {
-    flex-shrink: 0;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .85rem;
-    font-weight: 700;
-    margin-top: 2px;
+    flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; font-weight: 700; margin-top: 2px;
   }
   .step-body { flex: 1; }
-  .step-body h3 {
-    font-size: .95rem;
-    font-weight: 600;
-    margin-bottom: 2px;
-  }
-  .step-body p {
-    font-size: .875rem;
-    color: var(--text2);
-    line-height: 1.6;
-  }
+  .step-body h3 { font-size: .92rem; font-weight: 600; margin: 0 0 2px; }
+  .step-body p { font-size: .85rem; color: var(--text2); line-height: 1.6; }
   .step-body code {
-    background: var(--surface2);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: .82rem;
+    background: var(--surface2); padding: 1px 7px;
+    border-radius: 4px; font-size: .8rem;
     font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
     color: var(--accent);
   }
 
-  /* ── Agent Cards ── */
-  .agent-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    margin-bottom: 16px;
-    box-shadow: var(--shadow);
-    transition: box-shadow .2s ease;
-  }
-  .agent-card:hover { box-shadow: var(--shadow-md); }
-  .agent-card .head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 6px;
-  }
-  .agent-card .head .emoji { font-size: 1.4rem; }
-  .agent-card .head h3 { font-size: 1.05rem; font-weight: 600; }
-  .agent-card .meta {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
-  .agent-card .meta .tag {
-    font-size: .72rem;
-    font-weight: 600;
-    padding: 2px 10px;
-    border-radius: 999px;
-    background: var(--surface2);
-    color: var(--text2);
-  }
-  .agent-card .meta .tag.use { background: var(--green-light); color: var(--green); }
-  .agent-card .desc { font-size: .9rem; color: var(--text2); margin-bottom: 12px; line-height: 1.6; }
-  .prompt-box {
-    background: #1e293b;
-    color: #e2e8f0;
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-size: .82rem;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    line-height: 1.6;
-    position: relative;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
+  .cmd-block {
+    background: #1e293b; color: #e2e8f0;
+    border-radius: var(--radius-sm); padding: 12px 16px;
+    font-size: .8rem; font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    line-height: 1.65; position: relative;
+    overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+    margin: 8px 0;
   }
   .copy-btn {
-    position: absolute;
-    top: 8px; right: 8px;
-    background: rgba(255,255,255,.1);
-    border: 1px solid rgba(255,255,255,.15);
-    color: #94a3b8;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: .7rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .15s ease;
-    font-family: inherit;
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+    color: #94a3b8; padding: 3px 9px; border-radius: 4px;
+    font-size: .68rem; font-weight: 600; cursor: pointer;
+    transition: all .15s ease; font-family: inherit;
   }
   .copy-btn:hover { background: rgba(255,255,255,.2); color: #e2e8f0; }
   .copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
 
-  /* ── 7-Day Plan ── */
-  .days-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .day-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
+  .arch-diagram {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    flex-wrap: wrap; padding: 20px 10px; margin: 14px 0;
+    background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 16px 18px;
-    box-shadow: var(--shadow);
-    position: relative;
   }
-  .day-card .day-num {
-    font-size: .7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    color: var(--accent);
-    margin-bottom: 4px;
+  .arch-step {
+    text-align: center; padding: 10px 16px;
+    background: var(--surface2); border-radius: var(--radius-sm);
+    border: 1px solid var(--border); min-width: 100px;
   }
-  .day-card h3 { font-size: .95rem; font-weight: 600; margin-bottom: 3px; }
-  .day-card p { font-size: .82rem; color: var(--text2); line-height: 1.55; }
+  .arch-step .icon { font-size: 1.4rem; display: block; margin-bottom: 3px; }
+  .arch-step .label { font-size: .75rem; font-weight: 600; color: var(--text2); }
+  .arch-step .sub { font-size: .68rem; color: var(--text3); }
+  .arch-arrow { font-size: 1.2rem; color: var(--text3); }
 
-  /* ── Safety List ── */
-  .safety-list { list-style: none; margin-bottom: 20px; }
-  .safety-list li {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: .9rem;
-    line-height: 1.5;
-  }
-  .safety-list li:last-child { border-bottom: none; }
-  .safety-list li .emoji { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+  .table-wrap { overflow-x: auto; margin-bottom: 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th { text-align: left; padding: 10px 12px; background: var(--surface2); border-bottom: 2px solid var(--border); color: var(--text2); font-weight: 600; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text2); }
+  tr:hover td { background: var(--surface2); }
 
-  /* ── Final CTA ── */
-  .cta-box {
-    background: linear-gradient(135deg, #1a365d 0%, #1e3a5f 100%);
-    border-radius: var(--radius);
-    padding: 32px 36px;
-    color: #fff;
-    text-align: center;
-    box-shadow: var(--shadow-lg);
-  }
-  .cta-box h2 { color: #fff; font-size: 1.5rem; justify-content: center; }
-  .cta-box p { color: rgba(255,255,255,.85); font-size: .95rem; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.65; }
-  .cta-box .example-prompt {
-    background: rgba(0,0,0,.2);
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: var(--radius-sm);
-    padding: 14px 18px;
-    text-align: left;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    font-size: .82rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,.9);
-    margin: 0 auto 16px;
-    max-width: 520px;
-    position: relative;
-  }
-  .cta-box .example-prompt .copy-btn {
-    background: rgba(255,255,255,.15);
-    border-color: rgba(255,255,255,.2);
-    color: rgba(255,255,255,.7);
-  }
-  .cta-box .example-prompt .copy-btn:hover { background: rgba(255,255,255,.25); color: #fff; }
-
-  /* ── Footer ── */
-  .footer {
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    text-align: center;
-    font-size: .8rem;
-    color: var(--text3);
-    line-height: 1.6;
-  }
+  .footer { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--border); text-align: center; font-size: .78rem; color: var(--text3); line-height: 1.6; }
   .footer strong { color: var(--text2); }
+  .footer a { color: var(--accent); text-decoration: none; }
 
-  /* ── Responsive ── */
+  .checklist { list-style: none; margin-bottom: 14px; }
+  .checklist li {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+    font-size: .88rem; line-height: 1.5;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li .emoji { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
   @media (max-width: 900px) {
-    .main { margin-left: 0; padding: 56px 24px 60px; }
+    .main { margin-left: 0; padding: 56px 20px 60px; }
     .sidebar { transform: translateX(-100%); }
     .sidebar.open { transform: translateX(0); }
     .sidebar-overlay.open { display: block; }
     .sidebar-toggle { display: block; }
-    .hero h1 { font-size: 1.8rem; }
+    .hero h1 { font-size: 1.6rem; }
     .card-grid { grid-template-columns: 1fr; }
-    .days-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 500px) {
-    .days-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 1.5rem; }
-    .main { padding: 56px 16px 40px; }
-    .cta-box { padding: 24px 20px; }
-    .agent-card { padding: 16px; }
+    .arch-diagram { flex-direction: column; }
+    .arch-arrow { transform: rotate(90deg); }
   }
 
-  /* ── Print ── */
   @media print {
     .sidebar { display: none; }
     .main { margin-left: 0; padding: 20px; max-width: 100%; }
     .sidebar-toggle { display: none; }
     .copy-btn { display: none; }
-    .card, .agent-card, .day-card { break-inside: avoid; }
   }
 </style>
 </head>
 <body>
 
-<!-- Sidebar toggle (mobile) -->
 <button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
 <div class="sidebar-overlay" id="overlay"></div>
 
-<!-- Sidebar -->
 <aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo"><span>⚡</span> Hermes Agent</div>
+  <div class="sidebar-logo"><span>⚡</span> Local AI Agent</div>
   <nav>
-    <div class="nav-label">Start Here</div>
-    <a href="#intro"><span class="emoji">👋</span> Introduction</a>
-    <a href="#what-is-agent"><span class="emoji">🤔</span> What is an AI Agent?</a>
-    <a href="#setup"><span class="emoji">🛠️</span> Installation</a>
+    <div class="nav-label">Overview</div>
+    <a href="#overview"><span class="emoji">🏗️</span> The Big Picture</a>
+    <a href="#specs"><span class="emoji">💻</span> Your Machine</a>
 
-    <div class="nav-label">In Practice</div>
-    <a href="#use-cases"><span class="emoji">💼</span> Use Cases</a>
-    <a href="#agents"><span class="emoji">🤖</span> Example Agents</a>
-    <a href="#7days"><span class="emoji">📅</span> First 7 Days Plan</a>
+    <div class="nav-label">Setup</div>
+    <a href="#ollama"><span class="emoji">🦙</span> Install Ollama + LLM</a>
+    <a href="#hermes"><span class="emoji">⚡</span> Install Hermes Agent</a>
+    <a href="#connect"><span class="emoji">🔗</span> Connect Hermes → LLM</a>
 
-    <div class="nav-label">Important</div>
-    <a href="#safety"><span class="emoji">🔒</span> Safety &amp; Privacy</a>
-    <a href="#your-first-agent"><span class="emoji">🚀</span> Your First Agent</a>
+    <div class="nav-label">Advanced</div>
+    <a href="#memory"><span class="emoji">🧠</span> Holographic Memory</a>
+    <a href="#run"><span class="emoji">🚀</span> Day-to-Day Running</a>
+    <a href="#which-model"><span class="emoji">🎯</span> Which Model to Pick</a>
+
+    <div class="nav-label">Reference</div>
+    <a href="#troubleshoot"><span class="emoji">🔧</span> Troubleshooting</a>
   </nav>
 </aside>
 
-<!-- Main content -->
-<div class="main" id="main">
+<div class="main">
 
   <!-- HERO -->
   <div class="hero">
-    <div class="badge">✨ Non-Technical Guide</div>
-    <h1>Getting Started with <span>Hermes Agent</span></h1>
-    <p>A friendly, visual guide for NGO professionals who want to work smarter — not harder — using AI agents for communication, reporting, events, and daily office workflows.</p>
+    <div class="badge">🔒 100% Offline — No API Keys, No Monthly Fees</div>
+    <h1>Run Hermes Agent <span>Fully Offline</span> on Your PC</h1>
+    <p>Turn your powerful machine into a private AI agent that never phones home. Local LLM + Hermes Agent + Holographic Memory = a persistent, intelligent assistant that runs entirely on your hardware.</p>
+    <div class="specs">
+      <span class="chip highlight">Intel i9-14900K</span>
+      <span class="chip highlight">RTX 5080 16GB</span>
+      <span class="chip highlight">32GB RAM</span>
+      <span class="chip">No internet needed</span>
+      <span class="chip">No monthly bills</span>
+    </div>
   </div>
 
-  <!-- 1. INTRODUCTION -->
-  <section id="intro">
-    <h2><span class="emoji">👋</span> What is Hermes Agent?</h2>
-    <p class="sub">Think of it as a personal assistant that lives in your computer — one you can talk to, give tasks to, and who remembers how you like things done.</p>
+  <!-- 1. THE BIG PICTURE -->
+  <section id="overview">
+    <h2><span class="emoji">🏗️</span> The Big Picture</h2>
+    <p class="sub">Three components that work together to give you a private, always-available AI assistant.</p>
+
+    <div class="arch-diagram">
+      <div class="arch-step">
+        <span class="icon">💬</span>
+        <div class="label">You (Chat)</div>
+        <div class="sub">Type your request</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-step">
+        <span class="icon">⚡</span>
+        <div class="label">Hermes Agent</div>
+        <div class="sub">Brain &amp; Tools</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-step">
+        <span class="icon">🦙</span>
+        <div class="label">Local LLM</div>
+        <div class="sub">Ollama + llama.cpp</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-step">
+        <span class="icon">🧠</span>
+        <div class="label">Holographic Memory</div>
+        <div class="sub">Remembers everything</div>
+      </div>
+    </div>
 
     <div class="card-grid">
       <div class="card">
-        <span class="icon">💬</span>
-        <h3>You talk to it</h3>
-        <p>Type what you need — "Draft a polite reminder email about tomorrow's meeting" — and it does the work.</p>
+        <span class="icon">🦙</span>
+        <h3>Local LLM (Ollama)</h3>
+        <p>A powerful language model runs on your RTX 5080. No cloud, no API calls, no monthly cost. Your RTX 5080 16GB can run models up to ~70B parameters with good speeds.</p>
+      </div>
+      <div class="card">
+        <span class="icon">⚡</span>
+        <h3>Hermes Agent</h3>
+        <p>The AI agent framework that uses the LLM to think, reason, and take action — write files, run commands, browse the web, manage tasks. Connects to any local LLM via OpenAI-compatible API.</p>
       </div>
       <div class="card">
         <span class="icon">🧠</span>
-        <h3>It understands context</h3>
-        <p>Unlike a simple chatbot, it can follow multi-step instructions, remember what you said before, and ask clarifying questions.</p>
-      </div>
-      <div class="card">
-        <span class="icon">🛠️</span>
-        <h3>It takes action</h3>
-        <p>Write to files, send emails, search the web, run scripts, generate reports. It doesn't just answer — it <em>does</em>.</p>
-      </div>
-      <div class="card">
-        <span class="icon">📱</span>
-        <h3>Works anywhere</h3>
-        <p>Use it from a desktop app, Telegram, WhatsApp, or even SMS. Same assistant, wherever you are.</p>
+        <h3>Holographic Memory</h3>
+        <p>Durable memory across sessions — Hermes remembers your preferences, past conversations, completed tasks, and learned knowledge. Queries facts by entity, reasons across them, and improves over time.</p>
       </div>
     </div>
 
     <div class="callout green">
-      <strong>✓ The big idea:</strong> Instead of switching between tabs — email, calendar, notes, ChatGPT, browser — you give one instruction and Hermes handles the chain of tasks. One prompt. Multiple actions. Less busywork.
+      <strong>✅ The result:</strong> Open your terminal, type <code>hermes</code>, and talk to a persistent AI assistant that is 100% offline, knows your history, runs NGO reports, drafts emails, summarizes meetings, and never costs a cent after setup.
     </div>
   </section>
 
-  <!-- 2. WHAT IS AN AI AGENT -->
-  <section id="what-is-agent">
-    <h2><span class="emoji">🤔</span> What is an AI Agent?</h2>
-    <p class="sub">A simple way to understand the difference between a chatbot and an agent.</p>
+  <!-- 2. YOUR MACHINE -->
+  <section id="specs">
+    <h2><span class="emoji">💻</span> Your Machine — What It Can Run</h2>
+    <p class="sub">Your Intel i9-14900K + RTX 5080 16GB + 32GB RAM is an excellent setup for local AI.</p>
 
-    <div class="card-grid">
-      <div class="card" style="border-top: 3px solid var(--text3);">
-        <span class="icon">💭</span>
-        <h3>Chatbot (like ChatGPT)</h3>
-        <p>You ask a question, it gives an answer. That's it. You still have to copy-paste, open other apps, and do the actual work yourself.</p>
-        <p style="margin-top:8px;font-size:.8rem;color:var(--text3);"><em>"Write an email for me" → it writes text, and you copy it to Gmail yourself.</em></p>
-      </div>
-      <div class="card" style="border-top: 3px solid var(--accent);">
-        <span class="icon">🤖</span>
-        <h3>AI Agent (Hermes)</h3>
-        <p>You give it a goal. It figures out the steps, uses tools, and delivers the finished result. It can write files, send messages, search the web, and chain multiple actions together.</p>
-        <p style="margin-top:8px;font-size:.8rem;color:var(--text2);"><em>"Send a polite reminder about tomorrow's meeting to the team" → it writes the email and sends it.</em></p>
-      </div>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Component</th>
+          <th>Your Spec</th>
+          <th>Why It Matters</th>
+        </tr>
+        <tr>
+          <td>💻 CPU</td>
+          <td>Intel i9-14900K (24 cores / 32 threads)</td>
+          <td>Handles prompt processing, context management, and model loading. Plenty for any local model.</td>
+        </tr>
+        <tr>
+          <td>🎮 GPU</td>
+          <td>NVIDIA RTX 5080 — 16GB VRAM</td>
+          <td><strong>The key component.</strong> Runs the LLM at high speed. 16GB VRAM fits Q4 quantized models up to ~70B parameters.</td>
+        </tr>
+        <tr>
+          <td>🧠 RAM</td>
+          <td>32GB DDR5</td>
+          <td>Plenty for Hermes, system, and the model. More RAM = larger context windows.</td>
+        </tr>
+        <tr>
+          <td>💾 Storage</td>
+          <td>NVMe SSD (likely)</td>
+          <td>Models load quickly. A 70B Q4 model is about 40-45GB on disk.</td>
+        </tr>
+      </table>
     </div>
 
     <div class="callout">
-      <strong>💡 Analogy:</strong> A chatbot is like a recipe book that tells you how to cook. An AI agent is like a chef who cooks the meal for you — you just say what you want.
-    </div>
-
-    <div class="card-grid" style="margin-top:10px;">
-      <div class="card">
-        <span class="icon">📋</span>
-        <h3>Example 1 — Daily admin</h3>
-        <p><strong>Chatbot:</strong> "Write a meeting summary for me." → gives text, you paste it somewhere.<br>
-        <strong>Agent:</strong> "Summarise today's meeting notes and save them to the report folder." → writes the file for you.</p>
-      </div>
-      <div class="card">
-        <span class="icon">📧</span>
-        <h3>Example 2 — Emails</h3>
-        <p><strong>Chatbot:</strong> "Draft a reply to the donor's email." → gives you text, you copy into Outlook.<br>
-        <strong>Agent:</strong> "Reply to the latest email from [donor] saying we received their report and will respond by Friday." → finds the email and sends the reply.</p>
-      </div>
-      <div class="card">
-        <span class="icon">📊</span>
-        <h3>Example 3 — Reporting</h3>
-        <p><strong>Chatbot:</strong> "Give me a structure for a quarterly report." → gives you an outline.<br>
-        <strong>Agent:</strong> "Create a quarterly report draft from these bullet points and save it as a .docx." → creates the actual document.</p>
-      </div>
+      <strong>🎯 What this means for model size:</strong><br>
+      • <strong>Q4 quant (~4.5 bits/param):</strong> fits up to 20B-24B models entirely in VRAM (fastest)<br>
+      • <strong>Q4 quant with partial offload:</strong> up to 70B models (some layers on GPU, some on CPU — still usable)<br>
+      • <strong>Q2-KM / IQ3 quant:</strong> 70B fits in VRAM with lower quality but still very usable<br>
+      • <strong>Best practical fit:</strong> A 20B-24B model in Q4_K_M — fits entirely in 16GB VRAM with room for context
     </div>
   </section>
 
-  <!-- 3. INSTALLATION -->
-  <section id="setup">
-    <h2><span class="emoji">🛠️</span> Installation &amp; Setup</h2>
-    <p class="sub">Getting Hermes running on your computer takes about 15–20 minutes. Here's what you need and how to do it.</p>
+  <!-- 3. INSTALL OLLAMA + LLM -->
+  <section id="ollama">
+    <h2><span class="emoji">🦙</span> Step 1 — Install Ollama &amp; Download a Model</h2>
+    <p class="sub">Ollama is the easiest way to run local LLMs on Windows. It handles GPU acceleration, model management, and serves an OpenAI-compatible API automatically.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Download &amp; Install Ollama</h3>
+          <p>Go to <a href="https://ollama.com/download" target="_blank" rel="noopener" style="color:var(--accent)">ollama.com/download</a> and download the Windows installer. Run it — it installs like any normal program. After installation, Ollama runs in the system tray.</p>
+          <div class="cmd-block">
+Verify it works — open a terminal (Command Prompt or PowerShell):
+ollama --version
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Download a Model</h3>
+          <p>Pick a model from the list below. The first download takes a few minutes depending on model size. After that, it's cached locally.</p>
+          <div class="cmd-block">
+# For the fastest experience — fits entirely in your RTX 5080 16GB:
+ollama pull qwen2.5:14b-instruct-q4_K_M
+
+# For better quality and still fast:
+ollama pull qwen2.5:32b-instruct-q4_K_M
+
+# For maximum intelligence (largest, uses GPU + CPU):
+ollama pull command-r:35b-v01-q4_K_M
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p style="margin-top:6px;font-size:.82rem;color:var(--text3);">💡 <strong>Recommendation:</strong> Start with <code>qwen2.5:14b</code> to test, then upgrade to <code>32b</code> for better results on your RTX 5080.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Confirm the Model is Running</h3>
+          <p>Test it with a quick prompt:</p>
+          <div class="cmd-block">
+ollama run qwen2.5:14b-instruct-q4_K_M "What is Hermes Agent?"
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>You should get a response. Press <strong>Ctrl+D</strong> to exit when done.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Keep the API Server Running</h3>
+          <p>Ollama automatically runs a background server at <code>http://localhost:11434</code> once installed. This is the endpoint Hermes will talk to.</p>
+          <div class="cmd-block">
+# Test the API directly:
+curl http://localhost:11434/v1/chat/completions -d '{"model":"qwen2.5:14b","messages":[{"role":"user","content":"Hello"}]}'
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="callout green">
-      <strong>📦 What you need before starting:</strong><br>
-      • A computer (Windows, Mac, or Linux) — any laptop is fine<br>
-      • An internet connection<br>
-      • An API key from a provider like <strong>OpenAI</strong>, <strong>Anthropic</strong>, or <strong>DeepSeek</strong> (costs a few dollars per month)<br>
-      • Optional: a Telegram or WhatsApp account (for mobile use)
+      <strong>✅ Ollama is now running!</strong> The OpenAI-compatible server at <code>localhost:11434</code> is ready. No internet needed, no API key required.
     </div>
+  </section>
+
+  <!-- 4. INSTALL HERMES -->
+  <section id="hermes">
+    <h2><span class="emoji">⚡</span> Step 2 — Install Hermes Agent</h2>
+    <p class="sub">Hermes is the orchestrator that uses the local LLM to take real actions.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
           <h3>Install Node.js</h3>
-          <p>Go to <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> and download the LTS (Long Term Support) version. Run the installer — it's like installing any other program. This gives Hermes a runtime environment to run on.</p>
+          <p>Go to <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--accent)">nodejs.org</a> and download the LTS version. Run the installer — this is required for Hermes to run.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
           <h3>Install Git</h3>
-          <p>Go to <a href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a>, download, and install. This is a tool for downloading code from the internet.</p>
+          <p>Go to <a href="https://git-scm.com" target="_blank" rel="noopener" style="color:var(--accent)">git-scm.com</a>, download, and install.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>Install Hermes Agent</h3>
-          <p>Open your terminal (Command Prompt on Windows, or Terminal on Mac) and type:</p>
-          <div class="prompt-box" style="margin-top:8px;font-size:.82rem;">
+          <h3>Install Hermes</h3>
+          <div class="cmd-block">
 npx hermes-agent setup
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p style="margin-top:6px;">Follow the on-screen instructions. The installer will guide you through everything.</p>
+          <p>Follow the interactive setup. When it asks about a model provider, choose <strong>"Custom endpoint"</strong> — we'll configure it in the next step.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h3>Get an API Key</h3>
-          <p>Hermes needs a "brain" to think — that's the AI model. Sign up at a provider like <a href="https://platform.openai.com/signup" target="_blank" rel="noopener">OpenAI</a> or <a href="https://console.anthropic.com" target="_blank" rel="noopener">Anthropic</a>, create an API key (a long secret code), and paste it into Hermes during setup.</p>
+          <h3>Check it Works</h3>
+          <div class="cmd-block">
+hermes doctor
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>If everything is green, you're ready to connect Hermes to your local model.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CONNECT HERMES TO LOCAL LLM -->
+  <section id="connect">
+    <h2><span class="emoji">🔗</span> Step 3 — Connect Hermes to Your Local LLM</h2>
+    <p class="sub">This is the magic step — Hermes sends requests to Ollama instead of a cloud API.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Open Hermes Configuration</h3>
+          <div class="cmd-block">
+hermes config edit
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>This opens the config file in your default text editor.</p>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">5</div>
+        <div class="step-num">2</div>
         <div class="step-body">
-          <h3>Verify it works</h3>
-          <p>Type your first prompt:</p>
-          <div class="prompt-box" style="margin-top:8px;font-size:.82rem;">
-hello, who are you?
+          <h3>Configure the Local Provider</h3>
+          <p>Add or edit these lines under the <code>model</code> section:</p>
+          <div class="cmd-block">
+model:
+  default: qwen2.5:14b
+  provider: custom
+  base_url: http://localhost:11434/v1
+  api_key: not-needed
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Or use the setup wizard</h3>
+          <p>Alternatively, run the model setup from the terminal:</p>
+          <div class="cmd-block">
+hermes model
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>Select <strong>"Custom endpoint"</strong> → enter <code>http://localhost:11434/v1</code> → set model name to <code>qwen2.5:14b</code> → leave API key blank.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Test the Connection</h3>
+          <div class="cmd-block">
+hermes chat -q "Hello, who are you?"
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>If you get a response from your local model — congratulations! You now have a fully offline AI agent. 🎉</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <strong>⚠️ Important:</strong> For the 32B or larger models that don't fully fit in 16GB VRAM, Ollama automatically offloads some layers to CPU + RAM. This is normal. Speed will still be usable — a few seconds per response instead of sub-second. To force more GPU layers, you can set <code>OLLAMA_NUM_GPU=50</code> or similar in environment variables.
+    </div>
+  </section>
+
+  <!-- 6. HOLOGRAPHIC MEMORY -->
+  <section id="memory">
+    <h2><span class="emoji">🧠</span> Holographic Memory Setup</h2>
+    <p class="sub">This is what makes Hermes remember you across sessions — your name, preferences, past conversations, and learned facts.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <span class="icon">📝</span>
+        <h3>Built-in Memory (Default)</h3>
+        <p>Saves key facts as text at the top of the system prompt. Simple, works well, but limited to ~2,200 characters. Good enough for preferences and quick notes.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🧬</span>
+        <h3>Holographic Memory (Advanced)</h3>
+        <p>Uses a local SQLite database with entity resolution, trust scoring, and semantic search. No character limit, remembers structured facts, and can reason across multiple entities. <strong>Runs 100% offline.</strong></p>
+      </div>
+    </div>
+
+    <h3>Enable Holographic Memory</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Check Current Memory Status</h3>
+          <div class="cmd-block">
+hermes memory status
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Configure Holographic Memory Provider</h3>
+          <p>Edit your config (<code>hermes config edit</code>) and add or update:</p>
+          <div class="cmd-block">
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  provider: holographic
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Restart and Test</h3>
+          <p>Exit and restart Hermes:</p>
+          <div class="cmd-block">
+hermes
+
+# Then inside the session, test it:
+"Remember that my name is [your name] and I work for FES NGO"
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>In the next session, Hermes will remember who you are.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>How Holographic Memory Works</h3>
+    <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:14px;">
+      Unlike the built-in memory (which stores plain text notes), Holographic Memory stores structured facts with <strong>entity resolution</strong> — it knows that "Samer at FES" and "the person who asked about the report" are the same entity. It uses <strong>trust scoring</strong> to learn which facts are reliable and which are outdated. And it can <strong>reason across entities</strong>: "What does Samer know about WhatsApp?"
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Feature</th>
+          <th>Built-in Memory</th>
+          <th>Holographic Memory</th>
+        </tr>
+        <tr>
+          <td>Storage</td>
+          <td>2,200 character limit</td>
+          <td>Unlimited SQLite database</td>
+        </tr>
+        <tr>
+          <td>Search</td>
+          <td>Keyword match</td>
+          <td>Semantic + keyword + entity resolution</td>
+        </tr>
+        <tr>
+          <td>Persistence</td>
+          <td>Across sessions</td>
+          <td>Across sessions + profiles</td>
+        </tr>
+        <tr>
+          <td>Confidence</td>
+          <td>All facts equal</td>
+          <td>Trust scoring per fact</td>
+        </tr>
+        <tr>
+          <td>Offline</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes (local SQLite)</td>
+        </tr>
+        <tr>
+          <td>Provider</td>
+          <td>Built-in (always on)</td>
+          <td><code>holographic</code> (configurable)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout purple">
+      <strong>🔑 Key point for his use case:</strong> With Holographic Memory, Hermes can remember <em>everything</em> about his NGO work — donor preferences, reporting templates, meeting notes from weeks ago, communication styles for each partner, and recurring tasks. It's like having an assistant who never forgets.
+    </div>
+  </section>
+
+  <!-- 7. DAY-TO-DAY RUNNING -->
+  <section id="run">
+    <h2><span class="emoji">🚀</span> Day-to-Day: Running Your Offline Setup</h2>
+    <p class="sub">Once everything is installed, here's what daily use looks like.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Boot — Start Ollama</h3>
+          <p>Ollama auto-starts with Windows (runs in system tray). If not, launch it from the Start Menu. The API server at <code>localhost:11434</code> will be ready in a few seconds.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Open Hermes</h3>
+          <div class="cmd-block">
+hermes
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>This opens the interactive chat. Your local model loads and responds. The holographic memory is automatically available.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Start Working</h3>
+          <p>Just type what you need:</p>
+          <div class="cmd-block">
+"Draft an email to our partner about the upcoming workshop"
+"Summarize these meeting notes" [paste notes]
+"Create a checklist for next week's training event"
+"Remember that our donor prefers email over phone calls"
+"What did I ask you about yesterday?"
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="callout warn">
-      <strong>⚠️ Note:</strong> Some steps may vary depending on your operating system (Windows vs Mac) or the version of Hermes you're installing. If something doesn't work, <strong>always refer to the official Hermes documentation</strong> at <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener">hermes-agent.nousresearch.com/docs</a> — it has the most up-to-date instructions.
+    <div class="callout green">
+      <strong>💡 Pro tip:</strong> Add Ollama to Windows Startup so it's always ready. In Ollama settings (system tray icon → right-click), there's an option to "Run on startup." Same for Hermes gateway if you want it always available.
     </div>
   </section>
 
-  <!-- 4. USE CASES -->
-  <section id="use-cases">
-    <h2><span class="emoji">💼</span> Practical Use Cases for Your Role</h2>
-    <p class="sub">Real things you can do with Hermes from day one — no coding required.</p>
+  <!-- 8. WHICH MODEL TO PICK -->
+  <section id="which-model">
+    <h2><span class="emoji">🎯</span> Which Model Should He Use?</h2>
+    <p class="sub">A practical guide based on his RTX 5080 16GB + 32GB RAM.</p>
 
-    <div class="card-grid">
-      <div class="card"><span class="icon">📧</span><h3>Draft professional emails</h3><p>Ask it to write a formal email to a partner, donor, or government office. Specify the tone — diplomatic, urgent, polite.</p></div>
-      <div class="card"><span class="icon">📝</span><h3>Summarise meetings</h3><p>Paste your messy meeting notes and say "Turn this into a clean summary with action items."</p></div>
-      <div class="card"><span class="icon">📄</span><h3>Prepare NGO reports</h3><p>Give it bullet points from a field visit and ask for a structured report in professional language.</p></div>
-      <div class="card"><span class="icon">🗓️</span><h3>Organise event tasks</h3><p>"Create a step-by-step checklist for our workshop next Thursday with deadlines and responsible persons."</p></div>
-      <div class="card"><span class="icon">📢</span><h3>Communication plans</h3><p>"Draft a 1-page communication plan for our upcoming campaign targeting youth volunteers."</p></div>
-      <div class="card"><span class="icon">⏰</span><h3>Reminders &amp; follow-ups</h3><p>"Remind me to check on the donor report every Monday at 9 AM until it's submitted."</p></div>
-      <div class="card"><span class="icon">🎯</span><h3>Rewrite for diplomacy</h3><p>Paste a strongly worded email and ask: "Rewrite this more diplomatically."</p></div>
-      <div class="card"><span class="icon">🌐</span><h3>Translate &amp; improve</h3><p>"Improve this Arabic paragraph to be more professional" or "Translate this English draft to French for our partners."</p></div>
-      <div class="card"><span class="icon">📱</span><h3>Social media posts</h3><p>"Write 3 LinkedIn announcement posts about our recent workshop. Keep the tone inspiring but professional."</p></div>
-      <div class="card"><span class="icon">✅</span><h3>Checklists &amp; templates</h3><p>"Create a workshop preparation checklist with columns: task, deadline, person responsible, status."</p></div>
-    </div>
-
-    <div class="callout purple">
-      <strong>🔑 Key principle:</strong> If you do a repetitive task more than twice a week — drafting emails, formatting reports, writing reminders — you can probably turn it into a one-command agent prompt. The goal is to skip the boring setup and get straight to the finished draft.
-    </div>
-  </section>
-
-  <!-- 5. EXAMPLE AGENTS -->
-  <section id="agents">
-    <h2><span class="emoji">🤖</span> Example Agents You Can Create</h2>
-    <p class="sub">These are ready-to-use prompts you can copy, paste, and start using immediately.</p>
-
-    <!-- Agent 1 -->
-    <div class="agent-card">
-      <div class="head"><span class="emoji">📧</span><h3>Email Assistant Agent</h3></div>
-      <div class="meta">
-        <span class="tag use">⚡ Use for</span>
-        <span class="tag">Daily</span>
-      </div>
-      <div class="desc"><strong>What it does:</strong> Drafts professional emails for different audiences — donors, partners, government offices, colleagues. Adjusts tone to match the situation (formal, diplomatic, appreciative, urgent).</div>
-      <div class="desc"><strong>When to use:</strong> When you need to send an email but want a polished first draft you can review and send.</div>
-      <div class="prompt-box">
-Draft a professional email to [partner organisation name] acknowledging receipt of their quarterly report. Tone: warm but professional. Mention that we will review it and share feedback within two weeks. Thank them for their continued partnership.
-        <button class="copy-btn" onclick="copyText(this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Agent 2 -->
-    <div class="agent-card">
-      <div class="head"><span class="emoji">📝</span><h3>Meeting Summary Agent</h3></div>
-      <div class="meta">
-        <span class="tag use">⚡ Use for</span>
-        <span class="tag">Weekly meetings</span>
-      </div>
-      <div class="desc"><strong>What it does:</strong> Takes raw notes or a transcript from a meeting and produces a clean, structured summary with key decisions, action items, deadlines, and owners.</div>
-      <div class="desc"><strong>When to use:</strong> Right after a meeting, before everyone forgets what was agreed on.</div>
-      <div class="prompt-box">
-Turn these notes into a meeting summary:
-
-[Paste your notes here]
-
-Format: Title, Date, Attendees, Key Discussion Points, Decisions Made, Action Items (with owner and deadline).
-      <button class="copy-btn" onclick="copyText(this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Agent 3 -->
-    <div class="agent-card">
-      <div class="head"><span class="emoji">📄</span><h3>NGO Report Assistant Agent</h3></div>
-      <div class="meta">
-        <span class="tag use">⚡ Use for</span>
-        <span class="tag">Quarterly / Monthly</span>
-      </div>
-      <div class="desc"><strong>What it does:</strong> Converts raw field notes, data points, and updates into a structured narrative report suitable for donors, board members, or internal use.</div>
-      <div class="desc"><strong>When to use:</strong> At the end of a project phase, month, or quarter — when you need to compile updates into a readable document.</div>
-      <div class="prompt-box">
-Create a brief activity report from these points:
-
-[Paste your updates here]
-
-Structure: 1. Overview (2-3 sentences) 2. Key Activities 3. Achievements & Impact 4. Challenges 5. Next Steps. Language: professional, concise, suitable for an NGO donor report.
-      <button class="copy-btn" onclick="copyText(this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Agent 4 -->
-    <div class="agent-card">
-      <div class="head"><span class="emoji">🗓️</span><h3>Event Planning Agent</h3></div>
-      <div class="meta">
-        <span class="tag use">⚡ Use for</span>
-        <span class="tag">Workshops / Trainings</span>
-      </div>
-      <div class="desc"><strong>What it does:</strong> Generates a complete event preparation checklist: venue, materials, invitations, agenda, speakers, logistics, catering, and post-event tasks.</div>
-      <div class="desc"><strong>When to use:</strong> As soon as an event is confirmed, to make sure nothing is forgotten.</div>
-      <div class="prompt-box">
-Create a detailed event preparation checklist for a 1-day capacity-building workshop for 25 participants.
-
-Include columns: Task, Deadline, Person Responsible, Status. Cover these areas: venue booking, invitations, materials printing, agenda, speaker coordination, equipment, catering, registration, transportation, and post-event reporting.
-      <button class="copy-btn" onclick="copyText(this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Agent 5 -->
-    <div class="agent-card">
-      <div class="head"><span class="emoji">📅</span><h3>Communication Calendar Agent</h3></div>
-      <div class="meta">
-        <span class="tag use">⚡ Use for</span>
-        <span class="tag">Planning</span>
-      </div>
-      <div class="desc"><strong>What it does:</strong> Creates a month-long or week-long communication plan — which messages go out, to whom, through which channel, and when.</div>
-      <div class="desc"><strong>When to use:</strong> At the start of a campaign, awareness month, or donor reporting cycle.</div>
-      <div class="prompt-box">
-Draft a 2-week communication plan for our youth awareness campaign.
-
-For each day include: Date, Channel (WhatsApp / Email / LinkedIn / in-person), Audience, Message theme, Goal. Keep messages aligned with our NGO's mission of civic engagement and youth empowerment.
-      <button class="copy-btn" onclick="copyText(this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Agent 6 -->
-    <div class="agent-card">
-      <div class="head"><span class="emoji">⏰</span><h3>Follow-up Reminder Agent</h3></div>
-      <div class="meta">
-        <span class="tag use">⚡ Use for</span>
-        <span class="tag">Ongoing</span>
-      </div>
-      <div class="desc"><strong>What it does:</strong> Tracks pending tasks, follow-ups, and deadlines. Reminds you what needs attention — pending donor replies, unanswered emails, approaching deadlines.</div>
-      <div class="desc"><strong>When to use:</strong> Every morning to review what needs attention today.</div>
-      <div class="prompt-box">
-Based on my notes below, list all pending follow-ups that are overdue or due this week, and suggest a short message for each:
-
-[Paste your task list or notes here]
-
-Organise by priority: Urgent (due today/tomorrow), This week, and Next week. For each, propose a one-sentence follow-up message.
-      <button class="copy-btn" onclick="copyText(this)">Copy</button>
-      </div>
-    </div>
-
-    <!-- Agent 7 -->
-    <div class="agent-card">
-      <div class="head"><span class="emoji">✍️</span><h3>Document Rewriter Agent</h3></div>
-      <div class="meta">
-        <span class="tag use">⚡ Use for</span>
-        <span class="tag">Polishing</span>
-      </div>
-      <div class="desc"><strong>What it does:</strong> Takes a draft you've written and improves it — makes it more diplomatic, professional, or accessible depending on the audience. Also handles Arabic/French/English.</div>
-      <div class="desc"><strong>When to use:</strong> Before sending an important email, publishing a statement, or submitting a report that needs a second pair of eyes.</div>
-      <div class="prompt-box">
-Rewrite the following paragraph to be more diplomatic and professional. Keep the same meaning but soften the tone:
-
-[Paste your text here]
-
-Also suggest a version in Arabic if relevant.
-      <button class="copy-btn" onclick="copyText(this)">Copy</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. FIRST 7 DAYS PLAN -->
-  <section id="7days">
-    <h2><span class="emoji">📅</span> Your First 7 Days with Hermes</h2>
-    <p class="sub">A gradual plan to go from zero to daily productivity in one week. No pressure — just one small step each day.</p>
-
-    <div class="days-grid">
-      <div class="day-card">
-        <div class="day-num">Day 1</div>
-        <h3>🚀 Install &amp; Test</h3>
-        <p>Install Hermes and type 3 simple prompts: "Hello", "What can you help me with?", "Write a short thank-you note."</p>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 2</div>
-        <h3>📧 Email Assistant</h3>
-        <p>Use the email assistant prompt to draft 2 real emails. Review and send them. Notice how much time it saves on the first draft.</p>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 3</div>
-        <h3>📝 Meeting Summary</h3>
-        <p>After your next meeting, paste your notes into Hermes and ask for a clean summary with action items. Share it with the team.</p>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 4</div>
-        <h3>📄 Report Template</h3>
-        <p>Create a reusable template for your monthly or quarterly report. Ask Hermes: "Create a report template for our project updates."</p>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 5</div>
-        <h3>🗓️ Event Checklist</h3>
-        <p>If you have an upcoming event, ask for a checklist. If not, create a "workshop preparation checklist" and save it for later.</p>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 6</div>
-        <h3>⏰ Follow-ups</h3>
-        <p>List your open tasks and pending replies. Ask Hermes to organise them by priority and draft follow-up messages.</p>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 7</div>
-        <h3>🔄 Review &amp; Improve</h3>
-        <p>Look back at the week. Which prompts worked best? Save them. Which tasks felt repetitive? Turn them into agents you can reuse.</p>
-      </div>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Model</th>
+          <th>Size (Q4)</th>
+          <th>Fits RTX 5080?</th>
+          <th>Speed</th>
+          <th>Best For</th>
+        </tr>
+        <tr>
+          <td><strong>Qwen 2.5 14B</strong> (Q4_K_M)</td>
+          <td>~8.5 GB</td>
+          <td>✅ Full GPU</td>
+          <td>⚡ Very Fast</td>
+          <td>Starting out, daily use, fast responses</td>
+        </tr>
+        <tr>
+          <td><strong>Qwen 2.5 32B</strong> (Q4_K_M)</td>
+          <td>~19 GB</td>
+          <td>🟡 Mostly GPU (some CPU)</td>
+          <td>⚡ Fast</td>
+          <td>Better reasoning, coding, complex tasks</td>
+        </tr>
+        <tr>
+          <td><strong>DeepSeek Coder V2 Lite</strong> (16B, Q4)</td>
+          <td>~10 GB</td>
+          <td>✅ Full GPU</td>
+          <td>⚡ Very Fast</td>
+          <td>Coding, technical work, structured outputs</td>
+        </tr>
+        <tr>
+          <td><strong>Command R 35B</strong> (Q4_K_M)</td>
+          <td>~20 GB</td>
+          <td>🟡 Mostly GPU (some CPU)</td>
+          <td>⚡ Fast</td>
+          <td>Long context, complex instructions, writing</td>
+        </tr>
+        <tr>
+          <td><strong>Mistral Small 22B</strong> (Q4_K_M)</td>
+          <td>~13 GB</td>
+          <td>✅ Full GPU</td>
+          <td>⚡ Very Fast</td>
+          <td>Chat, general assistant, NGO tasks</td>
+        </tr>
+        <tr>
+          <td><strong>Llama 3.1 70B</strong> (Q2-KM / IQ3)</td>
+          <td>~28 GB / ~35 GB</td>
+          <td>❌ CPU + GPU hybrid</td>
+          <td>🐢 Slower</td>
+          <td>Maximum intelligence, but needs patience</td>
+        </tr>
+      </table>
     </div>
 
     <div class="callout">
-      <strong>💡 Tip:</strong> After Day 7, pick the one agent that saved you the most time and use it every day for the next week. That's when it becomes a habit.
+      <strong>🏆 Recommendation:</strong> Start with <strong>Qwen 2.5 32B (Q4_K_M)</strong>. It's the sweet spot between intelligence and speed on a 16GB card — most layers fit in VRAM, CPU handles the rest. For day-to-day NGO work (emails, reports, summaries), it's more than capable and responds in 2-5 seconds.
     </div>
   </section>
 
-  <!-- 7. SAFETY & PRIVACY -->
-  <section id="safety">
-    <h2><span class="emoji">🔒</span> Safety &amp; Privacy Guidance</h2>
-    <p class="sub">AI is a powerful tool — use it wisely. These guidelines will help you stay safe and professional.</p>
+  <!-- 9. TROUBLESHOOTING -->
+  <section id="troubleshoot">
+    <h2><span class="emoji">🔧</span> Troubleshooting</h2>
+    <p class="sub">Common issues and how to fix them.</p>
 
-    <ul class="safety-list">
-      <li>
-        <span class="emoji">🚫</span>
-        <div><strong>Do not paste confidential NGO data</strong> unless you have explicit permission. Treat AI conversations the same way you would treat a shared Google Doc — don't put anything you wouldn't want publicly known.</div>
-      </li>
-      <li>
-        <span class="emoji">👤</span>
-        <div><strong>Avoid sharing private donor or stakeholder information.</strong> Names, phone numbers, bank details, personal addresses — redact or anonymise these before pasting into any AI tool.</div>
-      </li>
-      <li>
-        <span class="emoji">👁️</span>
-        <div><strong>Always review AI outputs before sending.</strong> Hermes is very capable, but it can make mistakes — wrong dates, invented facts, slightly off tone. Read everything before it goes out under your name.</div>
-      </li>
-      <li>
-        <span class="emoji">🧠</span>
-        <div><strong>Use AI as an assistant, not a replacement for your judgment.</strong> You are the decision-maker. The agent drafts, suggests, and organises — but you approve, adapt, and decide. Your professional experience is what gives the output value.</div>
-      </li>
-      <li>
-        <span class="emoji">🔐</span>
-        <div><strong>Keep your API key private.</strong> Your API key is like a password — never share it, never email it, never paste it into a public forum.</div>
-      </li>
-      <li>
-        <span class="emoji">📌</span>
-        <div><strong>When in doubt, ask.</strong> If you're unsure whether you can share certain information with Hermes, ask your supervisor or IT officer first.</div>
-      </li>
-    </ul>
-
-    <div class="callout green">
-      <strong>✅ The safe rule:</strong> If you wouldn't write it in an email to a colleague you trust, don't write it in an AI prompt. When used thoughtfully, AI is a force multiplier for good — especially in the NGO space where every hour of saved admin time can go back into mission work.
-    </div>
-  </section>
-
-  <!-- 8. YOUR FIRST AGENT -->
-  <section id="your-first-agent">
-    <div class="cta-box">
-      <h2>🚀 Your First Agent Idea</h2>
-      <p>Think about your work week. What's one task you do repeatedly — every Monday, every meeting, every report cycle? That's your first agent.</p>
-
-      <div class="example-prompt">
-Pick one repetitive task from my job (Communications and Admin Officer at an NGO) and help me turn it into a reusable agent prompt. Ask me clarifying questions about the task first.
-        <button class="copy-btn" onclick="copyText(this)">Copy</button>
+    <div class="card-grid">
+      <div class="card">
+        <span class="icon">❌</span>
+        <h3>Hermes says "Provider not available"</h3>
+        <p>Check that <code>base_url</code> in config.yaml points to <code>http://localhost:11434/v1</code>. Make sure Ollama is running. Test with <code>curl http://localhost:11434</code>.</p>
       </div>
+      <div class="card">
+        <span class="icon">🐢</span>
+        <h3>Responses are very slow</h3>
+        <p>Check how many GPU layers are used. Run <code>ollama ps</code> to see. If the model is too big, try a smaller one (14B instead of 32B). Close other GPU apps (browser, games).</p>
+      </div>
+      <div class="card">
+        <span class="icon">💾</span>
+        <h3>Out of VRAM error</h3>
+        <p>The model is too large for 16GB. Switch to a smaller quant (Q3 or Q2) or a smaller model. Qwen 2.5 14B Q4_K_M will always fit.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🔄</span>
+        <h3>Model not responding</h3>
+        <p>Restart Ollama: right-click tray icon → Quit, then relaunch. Or run <code>ollama serve</code> in a terminal to see logs.</p>
+      </div>
+    </div>
 
-      <p style="font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:0;">
-        ✨ Copy the prompt above, paste it into Hermes, and describe any task you do repeatedly. It will help you build a custom agent — no coding, just conversation.
-      </p>
+    <div class="callout warn">
+      <strong>🛑 Still stuck?</strong> Check the official docs — they always have the latest info:<br>
+      • <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener" style="color:var(--accent)">Hermes Agent Docs</a><br>
+      • <a href="https://github.com/ollama/ollama" target="_blank" rel="noopener" style="color:var(--accent)">Ollama GitHub</a><br>
+      • Or ask AI agents to help each other — run <code>hermes chat -q "How do I fix the Hermes-Ollama connection?"</code>
     </div>
   </section>
 
   <!-- FOOTER -->
   <div class="footer">
-    <strong>Getting Started with Hermes Agent</strong> — A guide written for NGO professionals, by an AI agent.<br>
-    Hermes Agent is an open-source project by <a href="https://nousresearch.com" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Nous Research</a>.<br>
-    For the latest instructions, visit <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">hermes-agent.nousresearch.com/docs</a>.
+    <strong>Offline AI Agent Setup Guide</strong> — Built by Samer's Hermes Agent for his friend with the RTX 5080.<br>
+    Hermes Agent is an open-source project by <a href="https://nousresearch.com" target="_blank" rel="noopener">Nous Research</a>.<br>
+    Ollama by <a href="https://ollama.com" target="_blank" rel="noopener">Ollama Inc.</a> | <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener">Hermes Agent Docs</a>
   </div>
 
 </div>
 
 <script>
-  // ── Copy button ──
   function copyText(btn) {
     const box = btn.parentElement;
-    // Get text content excluding the button's text
     const text = box.textContent.replace(/^Copy(?:ied)?\s*/, '').replace(/\s*Copy\s*$/, '').trim();
     navigator.clipboard.writeText(text).then(() => {
       const orig = btn.textContent;
@@ -896,7 +829,6 @@ Pick one repetitive task from my job (Communications and Admin Officer at an NGO
         btn.classList.remove('copied');
       }, 1800);
     }).catch(() => {
-      // fallback
       const range = document.createRange();
       range.selectNodeContents(box);
       const sel = window.getSelection();
@@ -905,41 +837,25 @@ Pick one repetitive task from my job (Communications and Admin Officer at an NGO
     });
   }
 
-  // ── Mobile sidebar toggle ──
+  // Sidebar toggle
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
   const toggle = document.getElementById('menuToggle');
 
-  function openSidebar() {
-    sidebar.classList.add('open');
-    overlay.classList.add('open');
-  }
-  function closeSidebar() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('open');
-  }
-
-  toggle.addEventListener('click', () => {
-    if (sidebar.classList.contains('open')) closeSidebar();
-    else openSidebar();
-  });
+  function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('open'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+  toggle.addEventListener('click', () => { sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
   overlay.addEventListener('click', closeSidebar);
-
-  // ── Close sidebar on nav click (mobile) ──
   document.querySelectorAll('.sidebar nav a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (window.innerWidth <= 900) closeSidebar();
-    });
+    a.addEventListener('click', () => { if (window.innerWidth <= 900) closeSidebar(); });
   });
 
-  // ── Active nav link highlight ──
+  // Active nav highlight
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.sidebar nav a');
   const observer = new IntersectionObserver(entries => {
     let active = '';
-    entries.forEach(entry => {
-      if (entry.isIntersecting) active = entry.target.id;
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) active = entry.target.id; });
     if (active) {
       navLinks.forEach(link => {
         link.classList.toggle('active', link.getAttribute('href') === '#' + active);
