@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Offline AI Agent Setup — Local LLM + Hermes + Holographic Memory</title>
+<title>Agent Duel Log — Hermes Challenges</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -24,8 +24,6 @@
     --orange-light: #2e2408;
     --purple: #a78bfa;
     --purple-light: #1e1430;
-    --cyan: #22d3ee;
-    --cyan-light: #082b30;
     --rose: #fb7185;
     --rose-light: #2e0a12;
     --radius: 12px;
@@ -93,16 +91,6 @@
     font-size: .75rem; font-weight: 600; padding: 3px 12px;
     border-radius: 999px; margin-bottom: 10px;
   }
-  .hero .specs {
-    display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 8px;
-  }
-  .hero .specs .chip {
-    font-size: .7rem; font-weight: 600;
-    padding: 3px 10px; border-radius: 999px;
-    background: var(--surface2); color: var(--text2);
-    border: 1px solid var(--border);
-  }
-  .hero .specs .chip.highlight { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
   .hero h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; letter-spacing: -.03em; margin-bottom: 8px; }
   .hero h1 span { color: var(--accent); }
   .hero p { font-size: 1.05rem; color: var(--text2); max-width: 650px; line-height: 1.7; }
@@ -111,7 +99,6 @@
   section h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
   section h2 .emoji { font-size: 1.2rem; }
   section > p.sub { color: var(--text2); margin-bottom: 20px; font-size: .92rem; }
-  section h3 { font-size: 1.05rem; font-weight: 600; margin: 18px 0 6px; }
 
   .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-bottom: 20px; }
 
@@ -124,7 +111,6 @@
   .card .icon { font-size: 1.5rem; margin-bottom: 6px; display: block; }
   .card h3 { font-size: .95rem; font-weight: 600; margin-bottom: 3px; }
   .card p { font-size: .85rem; color: var(--text2); line-height: 1.55; }
-  .card .detail { font-size: .78rem; color: var(--text3); margin-top: 4px; }
 
   .callout {
     background: var(--accent-light); border-left: 4px solid var(--accent);
@@ -138,7 +124,118 @@
   .callout.green strong { color: var(--green); }
   .callout.purple { background: var(--purple-light); border-color: var(--purple); }
   .callout.purple strong { color: var(--purple); }
+  .callout.rose { background: var(--rose-light); border-color: var(--rose); }
+  .callout.rose strong { color: var(--rose); }
 
+  /* Duel entry */
+  .duel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .duel-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .duel-number {
+    font-size: .72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--text3);
+  }
+  .duel-title { font-size: 1.15rem; font-weight: 700; flex: 1; }
+  .duel-winner {
+    font-size: .72rem; font-weight: 600; padding: 3px 12px;
+    border-radius: 999px;
+  }
+  .duel-winner.samer { background: var(--accent-light); color: var(--accent); }
+  .duel-winner.friend { background: var(--green-light); color: var(--green); }
+  .duel-winner.tie { background: var(--purple-light); color: var(--purple); }
+
+  .duel-meta {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    font-size: .78rem; color: var(--text3); margin-bottom: 14px;
+  }
+
+  .duel-vs {
+    display: grid; grid-template-columns: 1fr 50px 1fr;
+    gap: 12px; align-items: start;
+    margin: 14px 0;
+  }
+  .duel-player {
+    background: var(--surface2); border-radius: var(--radius-sm);
+    padding: 14px 16px; border: 1px solid var(--border);
+  }
+  .duel-player .name {
+    font-size: .85rem; font-weight: 600; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .duel-player .name .tag {
+    font-size: .65rem; font-weight: 600; padding: 1px 8px;
+    border-radius: 999px;
+  }
+  .duel-player .name .tag.samer { background: var(--accent-light); color: var(--accent); }
+  .duel-player .name .tag.friend { background: var(--green-light); color: var(--green); }
+
+  .duel-player .prompt-label {
+    font-size: .7rem; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--text3); font-weight: 600; margin-bottom: 4px;
+  }
+  .cmd-block {
+    background: #1e293b; color: #e2e8f0;
+    border-radius: var(--radius-sm); padding: 10px 14px;
+    font-size: .78rem; font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    line-height: 1.6; position: relative;
+    overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+    margin: 6px 0;
+  }
+  .copy-btn {
+    position: absolute; top: 6px; right: 6px;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+    color: #94a3b8; padding: 3px 9px; border-radius: 4px;
+    font-size: .65rem; font-weight: 600; cursor: pointer;
+    transition: all .15s ease; font-family: inherit;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,.2); color: #e2e8f0; }
+  .copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
+
+  .duel-vs-divider {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 800; color: var(--text3);
+    padding-top: 28px;
+  }
+
+  .duel-result {
+    margin-top: 10px;
+    font-size: .88rem; color: var(--text2); line-height: 1.6;
+  }
+  .duel-result strong { color: var(--text); }
+
+  /* Scoreboard */
+  .scoreboard {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    justify-content: center; margin-bottom: 24px;
+  }
+  .score-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 28px;
+    text-align: center; min-width: 130px;
+    box-shadow: var(--shadow);
+  }
+  .score-card .score {
+    font-size: 2.4rem; font-weight: 800;
+    line-height: 1.1;
+  }
+  .score-card .score.samer { color: var(--accent); }
+  .score-card .score.friend { color: var(--green); }
+  .score-card .score.tie { color: var(--purple); }
+  .score-card .label {
+    font-size: .78rem; color: var(--text3); font-weight: 500;
+    margin-top: 2px;
+  }
+
+  /* How to play */
   .steps { counter-reset: step; margin-bottom: 14px; }
   .step { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
   .step-num {
@@ -150,65 +247,10 @@
   .step-body { flex: 1; }
   .step-body h3 { font-size: .92rem; font-weight: 600; margin: 0 0 2px; }
   .step-body p { font-size: .85rem; color: var(--text2); line-height: 1.6; }
-  .step-body code {
-    background: var(--surface2); padding: 1px 7px;
-    border-radius: 4px; font-size: .8rem;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    color: var(--accent);
-  }
-
-  .cmd-block {
-    background: #1e293b; color: #e2e8f0;
-    border-radius: var(--radius-sm); padding: 12px 16px;
-    font-size: .8rem; font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    line-height: 1.65; position: relative;
-    overflow-x: auto; white-space: pre-wrap; word-break: break-word;
-    margin: 8px 0;
-  }
-  .copy-btn {
-    position: absolute; top: 8px; right: 8px;
-    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
-    color: #94a3b8; padding: 3px 9px; border-radius: 4px;
-    font-size: .68rem; font-weight: 600; cursor: pointer;
-    transition: all .15s ease; font-family: inherit;
-  }
-  .copy-btn:hover { background: rgba(255,255,255,.2); color: #e2e8f0; }
-  .copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
-
-  .arch-diagram {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    flex-wrap: wrap; padding: 20px 10px; margin: 14px 0;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
-  .arch-step {
-    text-align: center; padding: 10px 16px;
-    background: var(--surface2); border-radius: var(--radius-sm);
-    border: 1px solid var(--border); min-width: 100px;
-  }
-  .arch-step .icon { font-size: 1.4rem; display: block; margin-bottom: 3px; }
-  .arch-step .label { font-size: .75rem; font-weight: 600; color: var(--text2); }
-  .arch-step .sub { font-size: .68rem; color: var(--text3); }
-  .arch-arrow { font-size: 1.2rem; color: var(--text3); }
-
-  .table-wrap { overflow-x: auto; margin-bottom: 18px; }
-  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
-  th { text-align: left; padding: 10px 12px; background: var(--surface2); border-bottom: 2px solid var(--border); color: var(--text2); font-weight: 600; }
-  td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text2); }
-  tr:hover td { background: var(--surface2); }
 
   .footer { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--border); text-align: center; font-size: .78rem; color: var(--text3); line-height: 1.6; }
   .footer strong { color: var(--text2); }
   .footer a { color: var(--accent); text-decoration: none; }
-
-  .checklist { list-style: none; margin-bottom: 14px; }
-  .checklist li {
-    display: flex; gap: 10px; align-items: flex-start;
-    padding: 8px 0; border-bottom: 1px solid var(--border);
-    font-size: .88rem; line-height: 1.5;
-  }
-  .checklist li:last-child { border-bottom: none; }
-  .checklist li .emoji { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
 
   @media (max-width: 900px) {
     .main { margin-left: 0; padding: 56px 20px 60px; }
@@ -218,8 +260,8 @@
     .sidebar-toggle { display: block; }
     .hero h1 { font-size: 1.6rem; }
     .card-grid { grid-template-columns: 1fr; }
-    .arch-diagram { flex-direction: column; }
-    .arch-arrow { transform: rotate(90deg); }
+    .duel-vs { grid-template-columns: 1fr; }
+    .duel-vs-divider { padding-top: 0; padding-bottom: 6px; }
   }
 
   @media print {
@@ -236,24 +278,18 @@
 <div class="sidebar-overlay" id="overlay"></div>
 
 <aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo"><span>⚡</span> Local AI Agent</div>
+  <div class="sidebar-logo"><span>⚔️</span> Agent Duel Log</div>
   <nav>
-    <div class="nav-label">Overview</div>
-    <a href="#overview"><span class="emoji">🏗️</span> The Big Picture</a>
-    <a href="#specs"><span class="emoji">💻</span> Your Machine</a>
+    <div class="nav-label">The Game</div>
+    <a href="#intro"><span class="emoji">🏆</span> What Is This?</a>
+    <a href="#how-to-play"><span class="emoji">🎮</span> How to Play</a>
+    <a href="#rules"><span class="emoji">📜</span> Rules</a>
 
-    <div class="nav-label">Setup</div>
-    <a href="#ollama"><span class="emoji">🦙</span> Install Ollama + LLM</a>
-    <a href="#hermes"><span class="emoji">⚡</span> Install Hermes Agent</a>
-    <a href="#connect"><span class="emoji">🔗</span> Connect Hermes → LLM</a>
+    <div class="nav-label">Duels</div>
+    <a href="#duel-1"><span class="emoji">⚔️</span> Duel 1 — ...</a>
 
-    <div class="nav-label">Advanced</div>
-    <a href="#memory"><span class="emoji">🧠</span> Holographic Memory</a>
-    <a href="#run"><span class="emoji">🚀</span> Day-to-Day Running</a>
-    <a href="#which-model"><span class="emoji">🎯</span> Which Model to Pick</a>
-
-    <div class="nav-label">Reference</div>
-    <a href="#troubleshoot"><span class="emoji">🔧</span> Troubleshooting</a>
+    <div class="nav-label">About</div>
+    <a href="#scoreboard"><span class="emoji">📊</span> Scoreboard</a>
   </nav>
 </aside>
 
@@ -261,557 +297,240 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="badge">🔒 100% Offline — No API Keys, No Monthly Fees</div>
-    <h1>Run Hermes Agent <span>Fully Offline</span> on Your PC</h1>
-    <p>Turn your powerful machine into a private AI agent that never phones home. Local LLM + Hermes Agent + Holographic Memory = a persistent, intelligent assistant that runs entirely on your hardware.</p>
-    <div class="specs">
-      <span class="chip highlight">Intel i9-14900K</span>
-      <span class="chip highlight">RTX 5080 16GB</span>
-      <span class="chip highlight">32GB RAM</span>
-      <span class="chip">No internet needed</span>
-      <span class="chip">No monthly bills</span>
-    </div>
+    <div class="badge">⚔️ A Friendly AI Agent Competition</div>
+    <h1>Agent <span>Duel</span> Log</h1>
+    <p>Two friends. Two Hermes agents. One challenge at a time. We both get the same task, craft the best prompt, and see whose agent delivers the better result. Wins, losses, ties, and everything we learn along the way.</p>
+    <p style="margin-top:12px;font-size:.9rem;color:var(--text3);">
+      <strong style="color:var(--accent)">Samer</strong> — Senior Frontend (Angular) · AI agent builder · WhatsApp bot maker &nbsp;⚔️&nbsp;
+      <strong style="color:var(--green)">Friend</strong> — NGO Comms & Admin Officer · First-time Hermes adventurer
+    </p>
   </div>
 
-  <!-- 1. THE BIG PICTURE -->
-  <section id="overview">
-    <h2><span class="emoji">🏗️</span> The Big Picture</h2>
-    <p class="sub">Three components that work together to give you a private, always-available AI assistant.</p>
-
-    <div class="arch-diagram">
-      <div class="arch-step">
-        <span class="icon">💬</span>
-        <div class="label">You (Chat)</div>
-        <div class="sub">Type your request</div>
-      </div>
-      <div class="arch-arrow">→</div>
-      <div class="arch-step">
-        <span class="icon">⚡</span>
-        <div class="label">Hermes Agent</div>
-        <div class="sub">Brain &amp; Tools</div>
-      </div>
-      <div class="arch-arrow">→</div>
-      <div class="arch-step">
-        <span class="icon">🦙</span>
-        <div class="label">Local LLM</div>
-        <div class="sub">Ollama + llama.cpp</div>
-      </div>
-      <div class="arch-arrow">→</div>
-      <div class="arch-step">
-        <span class="icon">🧠</span>
-        <div class="label">Holographic Memory</div>
-        <div class="sub">Remembers everything</div>
-      </div>
-    </div>
+  <!-- WHAT IS THIS -->
+  <section id="intro">
+    <h2><span class="emoji">🏆</span> What Is This?</h2>
+    <p class="sub">A living, growing page that documents our agent-building adventures.</p>
 
     <div class="card-grid">
       <div class="card">
-        <span class="icon">🦙</span>
-        <h3>Local LLM (Ollama)</h3>
-        <p>A powerful language model runs on your RTX 5080. No cloud, no API calls, no monthly cost. Your RTX 5080 16GB can run models up to ~70B parameters with good speeds.</p>
+        <span class="icon">🎯</span>
+        <h3>Same Challenge</h3>
+        <p>We pick one task — write an email, build a checklist, explain a concept — and both craft a prompt for our Hermes agent.</p>
       </div>
       <div class="card">
-        <span class="icon">⚡</span>
-        <h3>Hermes Agent</h3>
-        <p>The AI agent framework that uses the LLM to think, reason, and take action — write files, run commands, browse the web, manage tasks. Connects to any local LLM via OpenAI-compatible API.</p>
+        <span class="icon">🤖</span>
+        <h3>Different Agents</h3>
+        <p>Samer runs DeepSeek + cloud. Friend runs a local LLM on RTX 5080. Same task, different brains. Who gets the better result?</p>
       </div>
-      <div class="card">
-        <span class="icon">🧠</span>
-        <h3>Holographic Memory</h3>
-        <p>Durable memory across sessions — Hermes remembers your preferences, past conversations, completed tasks, and learned knowledge. Queries facts by entity, reasons across them, and improves over time.</p>
-      </div>
-    </div>
-
-    <div class="callout green">
-      <strong>✅ The result:</strong> Open your terminal, type <code>hermes</code>, and talk to a persistent AI assistant that is 100% offline, knows your history, runs NGO reports, drafts emails, summarizes meetings, and never costs a cent after setup.
-    </div>
-  </section>
-
-  <!-- 2. YOUR MACHINE -->
-  <section id="specs">
-    <h2><span class="emoji">💻</span> Your Machine — What It Can Run</h2>
-    <p class="sub">Your Intel i9-14900K + RTX 5080 16GB + 32GB RAM is an excellent setup for local AI.</p>
-
-    <div class="table-wrap">
-      <table>
-        <tr>
-          <th>Component</th>
-          <th>Your Spec</th>
-          <th>Why It Matters</th>
-        </tr>
-        <tr>
-          <td>💻 CPU</td>
-          <td>Intel i9-14900K (24 cores / 32 threads)</td>
-          <td>Handles prompt processing, context management, and model loading. Plenty for any local model.</td>
-        </tr>
-        <tr>
-          <td>🎮 GPU</td>
-          <td>NVIDIA RTX 5080 — 16GB VRAM</td>
-          <td><strong>The key component.</strong> Runs the LLM at high speed. 16GB VRAM fits Q4 quantized models up to ~70B parameters.</td>
-        </tr>
-        <tr>
-          <td>🧠 RAM</td>
-          <td>32GB DDR5</td>
-          <td>Plenty for Hermes, system, and the model. More RAM = larger context windows.</td>
-        </tr>
-        <tr>
-          <td>💾 Storage</td>
-          <td>NVMe SSD (likely)</td>
-          <td>Models load quickly. A 70B Q4 model is about 40-45GB on disk.</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="callout">
-      <strong>🎯 What this means for model size:</strong><br>
-      • <strong>Q4 quant (~4.5 bits/param):</strong> fits up to 20B-24B models entirely in VRAM (fastest)<br>
-      • <strong>Q4 quant with partial offload:</strong> up to 70B models (some layers on GPU, some on CPU — still usable)<br>
-      • <strong>Q2-KM / IQ3 quant:</strong> 70B fits in VRAM with lower quality but still very usable<br>
-      • <strong>Best practical fit:</strong> A 20B-24B model in Q4_K_M — fits entirely in 16GB VRAM with room for context
-    </div>
-  </section>
-
-  <!-- 3. INSTALL OLLAMA + LLM -->
-  <section id="ollama">
-    <h2><span class="emoji">🦙</span> Step 1 — Install Ollama &amp; Download a Model</h2>
-    <p class="sub">Ollama is the easiest way to run local LLMs on Windows. It handles GPU acceleration, model management, and serves an OpenAI-compatible API automatically.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Download &amp; Install Ollama</h3>
-          <p>Go to <a href="https://ollama.com/download" target="_blank" rel="noopener" style="color:var(--accent)">ollama.com/download</a> and download the Windows installer. Run it — it installs like any normal program. After installation, Ollama runs in the system tray.</p>
-          <div class="cmd-block">
-Verify it works — open a terminal (Command Prompt or PowerShell):
-ollama --version
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Download a Model</h3>
-          <p>Pick a model from the list below. The first download takes a few minutes depending on model size. After that, it's cached locally.</p>
-          <div class="cmd-block">
-# For the fastest experience — fits entirely in your RTX 5080 16GB:
-ollama pull qwen2.5:14b-instruct-q4_K_M
-
-# For better quality and still fast:
-ollama pull qwen2.5:32b-instruct-q4_K_M
-
-# For maximum intelligence (largest, uses GPU + CPU):
-ollama pull command-r:35b-v01-q4_K_M
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p style="margin-top:6px;font-size:.82rem;color:var(--text3);">💡 <strong>Recommendation:</strong> Start with <code>qwen2.5:14b</code> to test, then upgrade to <code>32b</code> for better results on your RTX 5080.</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Confirm the Model is Running</h3>
-          <p>Test it with a quick prompt:</p>
-          <div class="cmd-block">
-ollama run qwen2.5:14b-instruct-q4_K_M "What is Hermes Agent?"
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>You should get a response. Press <strong>Ctrl+D</strong> to exit when done.</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>Keep the API Server Running</h3>
-          <p>Ollama automatically runs a background server at <code>http://localhost:11434</code> once installed. This is the endpoint Hermes will talk to.</p>
-          <div class="cmd-block">
-# Test the API directly:
-curl http://localhost:11434/v1/chat/completions -d '{"model":"qwen2.5:14b","messages":[{"role":"user","content":"Hello"}]}'
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout green">
-      <strong>✅ Ollama is now running!</strong> The OpenAI-compatible server at <code>localhost:11434</code> is ready. No internet needed, no API key required.
-    </div>
-  </section>
-
-  <!-- 4. INSTALL HERMES -->
-  <section id="hermes">
-    <h2><span class="emoji">⚡</span> Step 2 — Install Hermes Agent</h2>
-    <p class="sub">Hermes is the orchestrator that uses the local LLM to take real actions.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Install Node.js</h3>
-          <p>Go to <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--accent)">nodejs.org</a> and download the LTS version. Run the installer — this is required for Hermes to run.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Install Git</h3>
-          <p>Go to <a href="https://git-scm.com" target="_blank" rel="noopener" style="color:var(--accent)">git-scm.com</a>, download, and install.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Install Hermes</h3>
-          <div class="cmd-block">
-npx hermes-agent setup
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>Follow the interactive setup. When it asks about a model provider, choose <strong>"Custom endpoint"</strong> — we'll configure it in the next step.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>Check it Works</h3>
-          <div class="cmd-block">
-hermes doctor
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>If everything is green, you're ready to connect Hermes to your local model.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. CONNECT HERMES TO LOCAL LLM -->
-  <section id="connect">
-    <h2><span class="emoji">🔗</span> Step 3 — Connect Hermes to Your Local LLM</h2>
-    <p class="sub">This is the magic step — Hermes sends requests to Ollama instead of a cloud API.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Open Hermes Configuration</h3>
-          <div class="cmd-block">
-hermes config edit
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>This opens the config file in your default text editor.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Configure the Local Provider</h3>
-          <p>Add or edit these lines under the <code>model</code> section:</p>
-          <div class="cmd-block">
-model:
-  default: qwen2.5:14b
-  provider: custom
-  base_url: http://localhost:11434/v1
-  api_key: not-needed
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Or use the setup wizard</h3>
-          <p>Alternatively, run the model setup from the terminal:</p>
-          <div class="cmd-block">
-hermes model
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>Select <strong>"Custom endpoint"</strong> → enter <code>http://localhost:11434/v1</code> → set model name to <code>qwen2.5:14b</code> → leave API key blank.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>Test the Connection</h3>
-          <div class="cmd-block">
-hermes chat -q "Hello, who are you?"
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>If you get a response from your local model — congratulations! You now have a fully offline AI agent. 🎉</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout warn">
-      <strong>⚠️ Important:</strong> For the 32B or larger models that don't fully fit in 16GB VRAM, Ollama automatically offloads some layers to CPU + RAM. This is normal. Speed will still be usable — a few seconds per response instead of sub-second. To force more GPU layers, you can set <code>OLLAMA_NUM_GPU=50</code> or similar in environment variables.
-    </div>
-  </section>
-
-  <!-- 6. HOLOGRAPHIC MEMORY -->
-  <section id="memory">
-    <h2><span class="emoji">🧠</span> Holographic Memory Setup</h2>
-    <p class="sub">This is what makes Hermes remember you across sessions — your name, preferences, past conversations, and learned facts.</p>
-
-    <div class="card-grid">
       <div class="card">
         <span class="icon">📝</span>
-        <h3>Built-in Memory (Default)</h3>
-        <p>Saves key facts as text at the top of the system prompt. Simple, works well, but limited to ~2,200 characters. Good enough for preferences and quick notes.</p>
+        <h3>Documented Here</h3>
+        <p>Both prompts, both results, and the winner are added to this page. Over time it becomes a collection of what we've learned together.</p>
       </div>
       <div class="card">
-        <span class="icon">🧬</span>
-        <h3>Holographic Memory (Advanced)</h3>
-        <p>Uses a local SQLite database with entity resolution, trust scoring, and semantic search. No character limit, remembers structured facts, and can reason across multiple entities. <strong>Runs 100% offline.</strong></p>
+        <span class="icon">📈</span>
+        <h3>Growing Together</h3>
+        <p>We push updates to this page via git. Both can edit, both can add new duels. The page evolves as our skills grow.</p>
       </div>
     </div>
 
-    <h3>Enable Holographic Memory</h3>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Check Current Memory Status</h3>
-          <div class="cmd-block">
-hermes memory status
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Configure Holographic Memory Provider</h3>
-          <p>Edit your config (<code>hermes config edit</code>) and add or update:</p>
-          <div class="cmd-block">
-memory:
-  memory_enabled: true
-  user_profile_enabled: true
-  provider: holographic
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Restart and Test</h3>
-          <p>Exit and restart Hermes:</p>
-          <div class="cmd-block">
-hermes
-
-# Then inside the session, test it:
-"Remember that my name is [your name] and I work for FES NGO"
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>In the next session, Hermes will remember who you are.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3>How Holographic Memory Works</h3>
-    <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:14px;">
-      Unlike the built-in memory (which stores plain text notes), Holographic Memory stores structured facts with <strong>entity resolution</strong> — it knows that "Samer at FES" and "the person who asked about the report" are the same entity. It uses <strong>trust scoring</strong> to learn which facts are reliable and which are outdated. And it can <strong>reason across entities</strong>: "What does Samer know about WhatsApp?"
-    </p>
-
-    <div class="table-wrap">
-      <table>
-        <tr>
-          <th>Feature</th>
-          <th>Built-in Memory</th>
-          <th>Holographic Memory</th>
-        </tr>
-        <tr>
-          <td>Storage</td>
-          <td>2,200 character limit</td>
-          <td>Unlimited SQLite database</td>
-        </tr>
-        <tr>
-          <td>Search</td>
-          <td>Keyword match</td>
-          <td>Semantic + keyword + entity resolution</td>
-        </tr>
-        <tr>
-          <td>Persistence</td>
-          <td>Across sessions</td>
-          <td>Across sessions + profiles</td>
-        </tr>
-        <tr>
-          <td>Confidence</td>
-          <td>All facts equal</td>
-          <td>Trust scoring per fact</td>
-        </tr>
-        <tr>
-          <td>Offline</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes (local SQLite)</td>
-        </tr>
-        <tr>
-          <td>Provider</td>
-          <td>Built-in (always on)</td>
-          <td><code>holographic</code> (configurable)</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="callout purple">
-      <strong>🔑 Key point for his use case:</strong> With Holographic Memory, Hermes can remember <em>everything</em> about his NGO work — donor preferences, reporting templates, meeting notes from weeks ago, communication styles for each partner, and recurring tasks. It's like having an assistant who never forgets.
+    <div class="callout">
+      <strong>💡 The real prize:</strong> Not who wins — but the techniques, prompts, and unexpected discoveries we share along the way. Each duel teaches both of us something new about how to talk to AI agents.
     </div>
   </section>
 
-  <!-- 7. DAY-TO-DAY RUNNING -->
-  <section id="run">
-    <h2><span class="emoji">🚀</span> Day-to-Day: Running Your Offline Setup</h2>
-    <p class="sub">Once everything is installed, here's what daily use looks like.</p>
+  <!-- HOW TO PLAY -->
+  <section id="how-to-play">
+    <h2><span class="emoji">🎮</span> How to Play</h2>
+    <p class="sub">Simple steps for each duel.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Boot — Start Ollama</h3>
-          <p>Ollama auto-starts with Windows (runs in system tray). If not, launch it from the Start Menu. The API server at <code>localhost:11434</code> will be ready in a few seconds.</p>
+          <h3>Pick a Challenge</h3>
+          <p>One of us proposes a task. Realistic or absurd — doesn't matter. E.g. "Write a polite rejection email to a donor," "Explain blockchain to a 10-year-old," "Create a 1-week meal plan for under $50."</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h3>Open Hermes</h3>
-          <div class="cmd-block">
-hermes
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>This opens the interactive chat. Your local model loads and responds. The holographic memory is automatically available.</p>
+          <h3>Both Craft a Prompt</h3>
+          <p>Each person writes a prompt for their Hermes agent. No collaborating — pure individual creativity. Spend as much or as little time as you want.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>Start Working</h3>
-          <p>Just type what you need:</p>
-          <div class="cmd-block">
-"Draft an email to our partner about the upcoming workshop"
-"Summarize these meeting notes" [paste notes]
-"Create a checklist for next week's training event"
-"Remember that our donor prefers email over phone calls"
-"What did I ask you about yesterday?"
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
+          <h3>Run &amp; Capture</h3>
+          <p>Each runs their prompt against their own Hermes agent. Save the output exactly as it appears — no editing, no cherry-picking.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Judge &amp; Document</h3>
+          <p>Decide together who wins, or call it a tie. Then add the duel to this page via GitHub.</p>
         </div>
       </div>
     </div>
 
     <div class="callout green">
-      <strong>💡 Pro tip:</strong> Add Ollama to Windows Startup so it's always ready. In Ollama settings (system tray icon → right-click), there's an option to "Run on startup." Same for Hermes gateway if you want it always available.
+      <strong>🔄 How to update this page:</strong> Fork/edit the repo at <code>github.com/SamerAdibJ/hermes-ngo-guide</code> → edit <code>index.html</code> → add a new duel section → push. The page auto-updates on GitHub Pages. Both of you can be added as collaborators.
     </div>
   </section>
 
-  <!-- 8. WHICH MODEL TO PICK -->
-  <section id="which-model">
-    <h2><span class="emoji">🎯</span> Which Model Should He Use?</h2>
-    <p class="sub">A practical guide based on his RTX 5080 16GB + 32GB RAM.</p>
-
-    <div class="table-wrap">
-      <table>
-        <tr>
-          <th>Model</th>
-          <th>Size (Q4)</th>
-          <th>Fits RTX 5080?</th>
-          <th>Speed</th>
-          <th>Best For</th>
-        </tr>
-        <tr>
-          <td><strong>Qwen 2.5 14B</strong> (Q4_K_M)</td>
-          <td>~8.5 GB</td>
-          <td>✅ Full GPU</td>
-          <td>⚡ Very Fast</td>
-          <td>Starting out, daily use, fast responses</td>
-        </tr>
-        <tr>
-          <td><strong>Qwen 2.5 32B</strong> (Q4_K_M)</td>
-          <td>~19 GB</td>
-          <td>🟡 Mostly GPU (some CPU)</td>
-          <td>⚡ Fast</td>
-          <td>Better reasoning, coding, complex tasks</td>
-        </tr>
-        <tr>
-          <td><strong>DeepSeek Coder V2 Lite</strong> (16B, Q4)</td>
-          <td>~10 GB</td>
-          <td>✅ Full GPU</td>
-          <td>⚡ Very Fast</td>
-          <td>Coding, technical work, structured outputs</td>
-        </tr>
-        <tr>
-          <td><strong>Command R 35B</strong> (Q4_K_M)</td>
-          <td>~20 GB</td>
-          <td>🟡 Mostly GPU (some CPU)</td>
-          <td>⚡ Fast</td>
-          <td>Long context, complex instructions, writing</td>
-        </tr>
-        <tr>
-          <td><strong>Mistral Small 22B</strong> (Q4_K_M)</td>
-          <td>~13 GB</td>
-          <td>✅ Full GPU</td>
-          <td>⚡ Very Fast</td>
-          <td>Chat, general assistant, NGO tasks</td>
-        </tr>
-        <tr>
-          <td><strong>Llama 3.1 70B</strong> (Q2-KM / IQ3)</td>
-          <td>~28 GB / ~35 GB</td>
-          <td>❌ CPU + GPU hybrid</td>
-          <td>🐢 Slower</td>
-          <td>Maximum intelligence, but needs patience</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="callout">
-      <strong>🏆 Recommendation:</strong> Start with <strong>Qwen 2.5 32B (Q4_K_M)</strong>. It's the sweet spot between intelligence and speed on a 16GB card — most layers fit in VRAM, CPU handles the rest. For day-to-day NGO work (emails, reports, summaries), it's more than capable and responds in 2-5 seconds.
-    </div>
-  </section>
-
-  <!-- 9. TROUBLESHOOTING -->
-  <section id="troubleshoot">
-    <h2><span class="emoji">🔧</span> Troubleshooting</h2>
-    <p class="sub">Common issues and how to fix them.</p>
+  <!-- RULES -->
+  <section id="rules">
+    <h2><span class="emoji">📜</span> Rules</h2>
+    <p class="sub">Keeps it fun and fair.</p>
 
     <div class="card-grid">
       <div class="card">
-        <span class="icon">❌</span>
-        <h3>Hermes says "Provider not available"</h3>
-        <p>Check that <code>base_url</code> in config.yaml points to <code>http://localhost:11434/v1</code>. Make sure Ollama is running. Test with <code>curl http://localhost:11434</code>.</p>
+        <span class="icon">🕐</span>
+        <h3>One Prompt, One Shot</h3>
+        <p>Each person writes one prompt and runs it once. No tweaking after seeing the result. The output is the output.</p>
       </div>
       <div class="card">
-        <span class="icon">🐢</span>
-        <h3>Responses are very slow</h3>
-        <p>Check how many GPU layers are used. Run <code>ollama ps</code> to see. If the model is too big, try a smaller one (14B instead of 32B). Close other GPU apps (browser, games).</p>
+        <span class="icon">📸</span>
+        <h3>No Editing Outputs</h3>
+        <p>The raw agent response is what gets published. Typo for typo. If it hallucinated a fact, that's part of the record.</p>
       </div>
       <div class="card">
-        <span class="icon">💾</span>
-        <h3>Out of VRAM error</h3>
-        <p>The model is too large for 16GB. Switch to a smaller quant (Q3 or Q2) or a smaller model. Qwen 2.5 14B Q4_K_M will always fit.</p>
+        <span class="icon">🤝</span>
+        <h3>Winner by Consensus</h3>
+        <p>Both agree who won, or it's a tie. No arguing. If you can't agree — call it a tie and learn from both.</p>
       </div>
       <div class="card">
-        <span class="icon">🔄</span>
-        <h3>Model not responding</h3>
-        <p>Restart Ollama: right-click tray icon → Quit, then relaunch. Or run <code>ollama serve</code> in a terminal to see logs.</p>
+        <span class="icon">🎭</span>
+        <h3>Any Challenge Welcome</h3>
+        <p>Serious (NGO reports) or silly (write a poem as a pirate). The variety is the fun part.</p>
       </div>
     </div>
 
     <div class="callout warn">
-      <strong>🛑 Still stuck?</strong> Check the official docs — they always have the latest info:<br>
-      • <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener" style="color:var(--accent)">Hermes Agent Docs</a><br>
-      • <a href="https://github.com/ollama/ollama" target="_blank" rel="noopener" style="color:var(--accent)">Ollama GitHub</a><br>
-      • Or ask AI agents to help each other — run <code>hermes chat -q "How do I fix the Hermes-Ollama connection?"</code>
+      <strong>⚠️ Note on fairness:</strong> Samer runs DeepSeek (cloud, powerful). Friend runs a local model on RTX 5080. Different hardware and models means different strengths — that's the point. It's not about whose setup is better, it's about who crafts the better <em>prompt</em> for their specific agent.
+    </div>
+  </section>
+
+  <!-- DUEL 1 -->
+  <section id="duel-1">
+    <h2><span class="emoji">⚔️</span> Duel 1 — ...</h2>
+    <p class="sub">The first duel hasn't been played yet. That's where you come in!</p>
+
+    <div class="callout purple">
+      <strong>🏁 Ready to play?</strong> Pick a challenge, both write your prompts, run them, and send the results to each other. Then one of you edits this page to add the duel entry. I'll design the duel template below so you know exactly what to fill in.
+    </div>
+
+    <!-- Template for future duels — kept as a reference -->
+    <div class="duel" style="opacity:.4;pointer-events:none;">
+      <div class="duel-header">
+        <span class="duel-number">Duel 1</span>
+        <span class="duel-title">The First Challenge</span>
+        <span class="duel-winner samer">🏆 Samer</span>
+      </div>
+      <div class="duel-meta">
+        <span>📅 June 2026</span>
+        <span>🤖 Samer: DeepSeek Chat</span>
+        <span>🤖 Friend: Qwen 2.5 32B (local)</span>
+      </div>
+      <p style="font-size:.9rem;color:var(--text2);margin-bottom:14px;"><strong>The Challenge:</strong> [Describe the task here]</p>
+
+      <div class="duel-vs">
+        <div class="duel-player">
+          <div class="name">Samer <span class="tag samer">Angular · Cloud</span></div>
+          <div class="prompt-label">Prompt</div>
+          <div class="cmd-block">
+[Paste Samer's prompt here]
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="prompt-label" style="margin-top:8px;">Result</div>
+          <div class="cmd-block" style="border-left: 3px solid var(--accent);">
+[Paste Samer's agent output here]
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+        </div>
+
+        <div class="duel-vs-divider">VS</div>
+
+        <div class="duel-player">
+          <div class="name">Friend <span class="tag friend">NGO · Local LLM</span></div>
+          <div class="prompt-label">Prompt</div>
+          <div class="cmd-block">
+[Paste Friend's prompt here]
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <div class="prompt-label" style="margin-top:8px;">Result</div>
+          <div class="cmd-block" style="border-left: 3px solid var(--green);">
+[Paste Friend's agent output here]
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="duel-result">
+        <strong>🏆 Winner:</strong> [Samer / Friend / Tie]<br>
+        <strong>💡 What we learned:</strong> [Key takeaways — what worked, what didn't, surprising results]
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>📝 How to add a duel:</strong> Copy the HTML structure above, fill in the prompts and results, change the winner tag, and push to the repo. I can help you craft the next duel entry on demand!
+    </div>
+
+    <!-- Challenge idea card -->
+    <div class="card-grid" style="margin-top:12px;">
+      <div class="card" style="border-top: 3px solid var(--accent);">
+        <span class="icon">💡</span>
+        <h3>Need Challenge Ideas?</h3>
+        <p>• "Write a LinkedIn post about our NGO's latest workshop"<br>
+        • "Explain how a GPU runs an AI model in 3 sentences"<br>
+        • "Create a weekly meal plan for a family of 4 on a budget"<br>
+        • "Write a haiku about debugging code at 2 AM"<br>
+        • "Draft a speech for a graduation ceremony"<br>
+        • "Turn these bullet points into a coherent paragraph"</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--green);">
+        <span class="icon">🎯</span>
+        <h3>Or Make Your Own</h3>
+        <p>Anything goes. The fun is seeing how two different agents — on different hardware with different prompts — interpret the same task. Some duels will surprise both of you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOREBOARD -->
+  <section id="scoreboard">
+    <h2><span class="emoji">📊</span> Scoreboard</h2>
+    <p class="sub">Track the tally as the duels grow.</p>
+
+    <div class="scoreboard">
+      <div class="score-card">
+        <div class="score samer">0</div>
+        <div class="label">🏆 Samer</div>
+      </div>
+      <div class="score-card">
+        <div class="score friend">0</div>
+        <div class="label">🏆 Friend</div>
+      </div>
+      <div class="score-card">
+        <div class="score tie">0</div>
+        <div class="label">🤝 Ties</div>
+      </div>
+      <div class="score-card">
+        <div class="score" style="color:var(--text2);">0</div>
+        <div class="label">⚔️ Total Duels</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>📊 Scoreboard auto-updates:</strong> Just update the numbers when you add a new duel. Simple as that.
     </div>
   </section>
 
   <!-- FOOTER -->
   <div class="footer">
-    <strong>Offline AI Agent Setup Guide</strong> — Built by Samer's Hermes Agent for his friend with the RTX 5080.<br>
-    Hermes Agent is an open-source project by <a href="https://nousresearch.com" target="_blank" rel="noopener">Nous Research</a>.<br>
-    Ollama by <a href="https://ollama.com" target="_blank" rel="noopener">Ollama Inc.</a> | <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener">Hermes Agent Docs</a>
+    <strong>Agent Duel Log</strong> — Built by <a href="https://github.com/SamerAdibJ">SamerAdibJ</a> and Friend · Powered by <a href="https://hermes-agent.nousresearch.com">Hermes Agent</a><br>
+    Want to join the duel? <a href="https://github.com/SamerAdibJ/hermes-ngo-guide">Contribute on GitHub</a>
   </div>
 
 </div>
@@ -837,7 +556,6 @@ hermes
     });
   }
 
-  // Sidebar toggle
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
   const toggle = document.getElementById('menuToggle');
@@ -850,7 +568,6 @@ hermes
     a.addEventListener('click', () => { if (window.innerWidth <= 900) closeSidebar(); });
   });
 
-  // Active nav highlight
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.sidebar nav a');
   const observer = new IntersectionObserver(entries => {
