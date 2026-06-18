@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Agent Setup — DeepSeek Cloud + Hermes + Holographic Memory</title>
+<title>AI Agent Setup — DeepSeek Cloud + Hermes (Desktop) + Memory</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -214,6 +214,17 @@
   .checklist li:last-child { border-bottom: none; }
   .checklist li .emoji { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
 
+  .dl-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent2); color: #fff;
+    padding: 14px 28px; border-radius: var(--radius);
+    font-size: 1rem; font-weight: 700; text-decoration: none;
+    margin: 6px 0 14px;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .dl-btn:hover { background: #2563eb; transform: translateY(-2px); }
+  .dl-btn .sub { font-weight: 400; font-size: .72rem; opacity: .7; }
+
   @media (max-width: 900px) {
     .main { margin-left: 0; padding: 56px 20px 60px; }
     .sidebar { transform: translateX(-100%); }
@@ -248,13 +259,13 @@
 
     <div class="nav-label">Setup</div>
     <a href="#apikey"><span class="emoji">🔑</span> Get Your DeepSeek API Key</a>
-    <a href="#hermes"><span class="emoji">⚡</span> Install Hermes Agent</a>
-    <a href="#connect"><span class="emoji">🔗</span> Connect Hermes → DeepSeek</a>
+    <a href="#desktop"><span class="emoji">🖥️</span> Install Hermes Desktop</a>
+    <a href="#connect"><span class="emoji">🔗</span> Add DeepSeek &amp; Start</a>
 
     <div class="nav-label">Advanced</div>
     <a href="#memory"><span class="emoji">🧠</span> Holographic Memory</a>
     <a href="#run"><span class="emoji">🚀</span> Day-to-Day Running</a>
-    <a href="#providers"><span class="emoji">🎯</span> Which Provider to Pick</a>
+    <a href="#providers"><span class="emoji">🎯</span> Which Provider &amp; Model</a>
 
     <div class="nav-label">Reference</div>
     <a href="#troubleshoot"><span class="emoji">🔧</span> Troubleshooting</a>
@@ -271,99 +282,99 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="badge">☁️ Cloud AI — No GPU Needed, Just an API Key</div>
-    <h1>Run Hermes Agent with <span>DeepSeek Cloud</span></h1>
-    <p>Turn your laptop into an intelligent AI assistant in 15 minutes. No GPU required, no local LLM to install — just sign up, get an API key, and start working with a persistent AI agent that remembers everything.</p>
+    <div class="badge">☁️ No GPU, No Terminal — Just Download &amp; Go</div>
+    <h1>Your AI Assistant in <span>5 Minutes</span></h1>
+    <p>Download Hermes Desktop, paste your DeepSeek API key, and start working with a persistent AI agent that drafts emails, summarizes meetings, remembers everything, and runs entirely in the cloud. No coding, no command line, no GPU needed.</p>
     <div class="specs">
       <span class="chip highlight">Any laptop</span>
-      <span class="chip highlight">No GPU needed</span>
+      <span class="chip highlight">No terminal knowledge needed</span>
       <span class="chip">~$5–15/month</span>
       <span class="chip">DeepSeek V4 / V3 / R1</span>
     </div>
+    <a href="https://hermes-agent.nousresearch.com" target="_blank" rel="noopener" class="dl-btn">
+      ⬇️ Download Hermes Desktop
+      <span class="sub">Windows &amp; macOS</span>
+    </a>
   </div>
 
   <!-- 1. THE BIG PICTURE -->
   <section id="overview">
     <h2><span class="emoji">🏗️</span> The Big Picture</h2>
-    <p class="sub">Three components that work together to give you a persistent, cloud-powered AI assistant.</p>
+    <p class="sub">Three pieces that work together to give you a persistent AI assistant — no technical knowledge required.</p>
 
     <div class="arch-diagram">
       <div class="arch-step">
         <span class="icon">💬</span>
-        <div class="label">You (Chat)</div>
-        <div class="sub">Type your request</div>
+        <div class="label">You</div>
+        <div class="sub">Type what you need</div>
       </div>
       <div class="arch-arrow">→</div>
       <div class="arch-step">
-        <span class="icon">⚡</span>
-        <div class="label">Hermes Agent</div>
-        <div class="sub">Brain &amp; Tools</div>
+        <span class="icon">🖥️</span>
+        <div class="label">Hermes Desktop</div>
+        <div class="sub">The app on your PC</div>
       </div>
       <div class="arch-arrow">→</div>
       <div class="arch-step">
         <span class="icon">☁️</span>
         <div class="label">DeepSeek Cloud</div>
-        <div class="sub">Powerful LLM via API</div>
+        <div class="sub">Powerful AI via API</div>
       </div>
       <div class="arch-arrow">→</div>
       <div class="arch-step">
         <span class="icon">🧠</span>
-        <div class="label">Holographic Memory</div>
-        <div class="sub">Remembers everything</div>
+        <div class="label">Memory (local)</div>
+        <div class="sub">Never forgets anything</div>
       </div>
     </div>
 
     <div class="card-grid">
       <div class="card">
-        <span class="icon">☁️</span>
-        <h3>DeepSeek Cloud API</h3>
-        <p>DeepSeek's latest models (V4 Flash, V4 Pro, R1) run on their servers — you just call the API. No downloads, no GPU required. Pay only for what you use (cache hits cost pennies).</p>
+        <span class="icon">🖥️</span>
+        <h3>Hermes Desktop App</h3>
+        <p>Install it like any other program — one download, one installer. Then chat with your AI through a clean desktop interface. No command line, no terminal, no config files to edit.</p>
       </div>
       <div class="card">
-        <span class="icon">⚡</span>
-        <h3>Hermes Agent</h3>
-        <p>The AI agent framework that uses DeepSeek to think, reason, and take action — write files, run commands, manage tasks, remember your preferences. Connects via a single API key.</p>
+        <span class="icon">☁️</span>
+        <h3>DeepSeek Cloud AI</h3>
+        <p>DeepSeek's latest models (V4 Flash, V4 Pro, R1) run on their servers — your laptop just sends requests via the API. No GPU, no downloads. Pay ~$5–15/month for daily NGO work.</p>
       </div>
       <div class="card">
         <span class="icon">🧠</span>
-        <h3>Holographic Memory</h3>
-        <p>Durable memory across sessions — Hermes remembers your name, preferences, past conversations, completed tasks, and learned facts. Uses entity resolution and trust scoring to get smarter over time.</p>
+        <h3>Memory (Local)</h3>
+        <p>Your preferences, past conversations, and learned facts are stored on your own machine — never sent to the cloud. Hermes remembers who you are, your work context, and what you've done before.</p>
       </div>
     </div>
 
     <div class="callout green">
-      <strong>✅ The result:</strong> Open your terminal, type <code>hermes</code>, and talk to a persistent AI assistant that runs on DeepSeek's powerful models, knows your history, drafts NGO reports, summarizes meetings, and costs about the same as a streaming subscription.
+      <strong>✅ The result:</strong> Open the Hermes Desktop app, type what you need, and get it done — drafting emails, summarizing meetings, creating checklists, tracking follow-ups. And it remembers everything from session to session.
     </div>
   </section>
 
   <!-- 2. WHAT YOU NEED -->
   <section id="prepare">
     <h2><span class="emoji">📋</span> What You Need Before Starting</h2>
-    <p class="sub">Nothing special — just a laptop and 15 minutes. No GPU, no local LLM, no technical setup.</p>
+    <p class="sub">Really simple — just these four things. No experience required.</p>
 
     <ul class="checklist">
-      <li><span class="emoji">💻</span> <strong>A computer</strong> — Windows, Mac, or Linux. Any laptop works.</li>
-      <li><span class="emoji">📶</span> <strong>Internet connection</strong> — your AI runs in the cloud, so you need a connection to use it.</li>
-      <li><span class="emoji">🔑</span> <strong>A DeepSeek API key</strong> — free to create, costs a few dollars per month depending on usage. We'll walk through getting one below.</li>
-      <li><span class="emoji">📱</span> <strong>Optional:</strong> Telegram or WhatsApp account to use Hermes from your phone.</li>
+      <li><span class="emoji">💻</span> <strong>A computer</strong> — Windows 10/11 or macOS 12+. Any standard laptop works.</li>
+      <li><span class="emoji">📶</span> <strong>Internet connection</strong> — the AI runs in the cloud, so you need to be online to use it.</li>
+      <li><span class="emoji">🔑</span> <strong>A DeepSeek API key</strong> — free to create, costs a few dollars per month. We'll walk through getting one.</li>
+      <li><span class="emoji">⏱️</span> <strong>5 minutes</strong> — that's how long the whole setup takes.</li>
     </ul>
-
-    <div class="callout">
-      <strong>💰 Estimated monthly cost:</strong> For daily NGO work — drafting emails, summarizing meetings, reports — expect <strong>$5–15/month</strong> with DeepSeek. That's less than a streaming subscription. DeepSeek V4 Flash ($0.435/M input tokens) is the best value for general use.
-    </div>
   </section>
 
   <!-- 3. GET YOUR DEEPSEEK API KEY -->
   <section id="apikey">
     <h2><span class="emoji">🔑</span> Step 1 — Get Your DeepSeek API Key</h2>
-    <p class="sub">An API key is like a password that lets Hermes talk to DeepSeek's AI models. Here's how to get one.</p>
+    <p class="sub">An API key is like a password that lets Hermes talk to DeepSeek's AI models. You only do this once.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Sign up for a DeepSeek Account</h3>
-          <p>Go to <a href="https://platform.deepseek.com/signup" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/signup</a> and create an account. You can sign up with your email or Google account.</p>
+          <h3>Create a DeepSeek Account</h3>
+          <p>Go to <a href="https://platform.deepseek.com/signup" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/signup</a> and sign up with your email or Google account.</p>
         </div>
       </div>
       <div class="step">
@@ -371,234 +382,196 @@
         <div class="step-body">
           <h3>Create an API Key</h3>
           <p>Once logged in:</p>
-          <p style="margin-top:4px;">1. Go to the <strong>API Keys</strong> page (left sidebar → API Keys)</p>
+          <p style="margin-top:4px;">1. Go to <strong>API Keys</strong> in the left sidebar</p>
           <p>2. Click <strong>"Create API Key"</strong></p>
-          <p>3. Give it a name like <code>"Hermes Agent"</code></p>
-          <p>4. Copy the key — it looks like <code>sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></p>
-          <p style="margin-top:6px;font-size:.82rem;color:var(--orange);font-weight:600;">⚠️ Copy it now — you won't be able to see it again after you leave the page!</p>
+          <p>3. Give it a name like <code>Hermes Desktop</code></p>
+          <p>4. Copy the key — it looks like <code>sk-xxxxxxxxxxxxxxxx</code></p>
+          <p style="margin-top:6px;font-size:.82rem;color:var(--orange);font-weight:600;">⚠️ Copy it now — you won't see it again after you leave the page!</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>Add Credits (Optional)</h3>
-          <p>DeepSeek gives you a small amount of free credits to start. After that, you need to add funds. Go to <strong>Billing</strong> → <strong>Top Up</strong> and add $5–10 to start. That will last you weeks of regular use.</p>
+          <h3>Add Credit (Optional but Recommended)</h3>
+          <p>DeepSeek gives you a small amount of free credit to start. When that runs out, go to <strong>Billing → Top Up</strong> and add $5–10. That will last weeks of regular use.</p>
           <div class="cmd-block">
-DeepSeek pricing (as of June 2026):
+DeepSeek pricing (June 2026):
 
-V4 Flash (default):  $0.435 /M input tokens  |  $0.87 /M output
-V4 Pro (stronger):   $1.74  /M input tokens  |  $3.48 /M output
-DeepSeek Chat (V3):  $0.14  /M input tokens  |  $0.28 /M output
-DeepSeek R1 (reason): $0.55 /M input tokens  |  $2.19 /M output
+V4 Flash (best value):   $0.44 /M input tokens → ~$0.30–0.80/day for NGO work
+V4 Pro (strongest):      $1.74 /M input tokens → for complex analysis
+DeepSeek Chat (V3):      $0.14 /M input tokens → cheapest, but being phased out
+DeepSeek R1 (reasoning): $0.55 /M input tokens → for step-by-step logic
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p style="margin-top:6px;font-size:.82rem;color:var(--text3);">💡 <strong>Recommendation:</strong> Start with DeepSeek V4 Flash. It's fast, capable, and the best value. A full day of NGO work might cost $0.30–0.80.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>Test Your API Key</h3>
-          <p>You can test that your key works with this curl command in your terminal:</p>
-          <div class="cmd-block">
-curl https://api.deepseek.com/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer sk-your-key-here" \
-  -d '{"model":"deepseek-chat","messages":[{"role":"user","content":"Hello!"}]}'
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p style="margin-top:4px;">You should get a JSON response with DeepSeek's reply. If you see an error, double-check your key.</p>
         </div>
       </div>
     </div>
 
     <div class="callout green">
-      <strong>✅ API key ready!</strong> Keep it safe — treat it like a password. Never share it, never paste it into public forums. We'll add it to Hermes in Step 3.
+      <strong>✅ Done!</strong> Keep that key safe — treat it like a password. Never share it or paste it in public forums. You'll paste it into Hermes Desktop next.
     </div>
   </section>
 
-  <!-- 4. INSTALL HERMES -->
-  <section id="hermes">
-    <h2><span class="emoji">⚡</span> Step 2 — Install Hermes Agent</h2>
-    <p class="sub">Hermes is the orchestrator that uses DeepSeek's AI to take real actions — write files, manage tasks, search the web, and remember your preferences.</p>
+  <!-- 4. INSTALL HERMES DESKTOP -->
+  <section id="desktop">
+    <h2><span class="emoji">🖥️</span> Step 2 — Install Hermes Desktop</h2>
+    <p class="sub">This is the app you'll talk to. Install it like any other program — no terminal, no code.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Install Node.js</h3>
-          <p>Go to <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--accent)">nodejs.org</a> and download the LTS version. Run the installer — this is required for Hermes to run. (If you already have Node.js, skip this step.)</p>
+          <h3>Download the Installer</h3>
+          <p>Go to <a href="https://hermes-agent.nousresearch.com" target="_blank" rel="noopener" style="color:var(--accent)">hermes-agent.nousresearch.com</a> and click <strong>"DOWNLOAD FOR WINDOWS"</strong> (or macOS if you're on a Mac).</p>
+          <a href="https://hermes-agent.nousresearch.com" target="_blank" rel="noopener" class="dl-btn" style="font-size:.85rem;padding:10px 20px;">
+            ⬇️ Download Hermes Desktop
+          </a>
+          <p style="margin-top:6px;">The download is ~100MB — it should take less than a minute on a normal connection.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h3>Install Git</h3>
-          <p>Go to <a href="https://git-scm.com" target="_blank" rel="noopener" style="color:var(--accent)">git-scm.com</a>, download, and install.</p>
+          <h3>Run the Installer</h3>
+          <p>Open the downloaded file and follow the prompts. It's the same as installing Zoom, Slack, or any other desktop app. The installer handles everything — including all dependencies.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>Install Hermes</h3>
+          <h3>Open Hermes Desktop</h3>
+          <p>Once installed, launch Hermes Desktop from your Start Menu (Windows) or Applications folder (macOS).</p>
+          <p style="margin-top:6px;">You'll see a clean chat window. If it asks you to set up an account, click <strong>"Skip"</strong> or <strong>"Use API Key"</strong> — we'll connect it to DeepSeek next.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>💡 What about the command line?</strong> You don't need it. Hermes Desktop gives you a full chat interface without ever opening a terminal. But if you get curious later, the CLI is installed too — just open Command Prompt and type <code>hermes</code>.
+    </div>
+  </section>
+
+  <!-- 5. CONNECT TO DEEPSEEK -->
+  <section id="connect">
+    <h2><span class="emoji">🔗</span> Step 3 — Add DeepSeek &amp; Start Chatting</h2>
+    <p class="sub">One paste of your API key, and Hermes is connected to DeepSeek's AI.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Open Settings in Hermes Desktop</h3>
+          <p>In the Hermes Desktop app, click on your profile icon or the <strong>⚙️ Settings</strong> gear icon (usually bottom-left or top-right corner of the window).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Select a Provider</h3>
+          <p>Go to the <strong>Model / Provider</strong> section. Choose <strong>DeepSeek</strong> from the list of providers. If you don't see DeepSeek listed, choose <strong>Custom</strong> and enter:</p>
           <div class="cmd-block">
-npx hermes-agent setup
+Provider URL: https://api.deepseek.com/v1
+Model name:   deepseek-v4-flash
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p>Follow the interactive setup. When it asks about your model provider, you can skip for now — we'll configure DeepSeek in the next step.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Paste Your API Key</h3>
+          <p>In the API Key field, paste the key you copied earlier (<code>sk-xxxxxxxxxxxxxxxx</code>). Click <strong>Save</strong> or <strong>Connect</strong>.</p>
+          <div class="callout green" style="margin-top:8px;margin-bottom:4px;">
+            <strong>✅ That's it!</strong> Hermes is now talking to DeepSeek. No command line, no configuration files, no technical steps.
+          </div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h3>Check Everything is Installed</h3>
+          <h3>Test It</h3>
+          <p>Type your first message in the chat:</p>
           <div class="cmd-block">
-hermes doctor
+Hello! Who are you and what can you help me with?
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p>If everything is green, you're ready to connect Hermes to DeepSeek.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. CONNECT HERMES TO DEEPSEEK -->
-  <section id="connect">
-    <h2><span class="emoji">🔗</span> Step 3 — Connect Hermes to DeepSeek</h2>
-    <p class="sub">This is where the magic happens — Hermes gets its "brain" from DeepSeek's cloud models.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Add Your API Key to Hermes</h3>
-          <p>Run the auth command to securely store your DeepSeek key:</p>
-          <div class="cmd-block">
-hermes auth add deepseek
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>Paste your API key when prompted. Hermes stores it securely in its config.</p>
-          <p style="margin-top:4px;">Alternatively, you can set it directly in the <code>.env</code> file:</p>
-          <div class="cmd-block">
-DEEPSEEK_API_KEY=sk-your-key-here
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Set DeepSeek as Your Provider</h3>
-          <p>Use the interactive model picker:</p>
-          <div class="cmd-block">
-hermes model
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>Select <strong>DeepSeek</strong> as your provider and choose your preferred model. Or set it directly in config:</p>
-          <div class="cmd-block">
-hermes config edit
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>And add or edit these lines:</p>
-          <div class="cmd-block">
-model:
-  default: deepseek-chat   # or deepseek-v4-flash, deepseek-v4-pro, deepseek-reasoner
-  provider: deepseek
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Test the Connection</h3>
-          <div class="cmd-block">
-hermes chat -q "Hello! Who are you and what can you do?"
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>If you get a response from DeepSeek — congratulations! 🎉 You now have Hermes running on cloud AI.</p>
+          <p>If you get a reply — congratulations! 🎉 Your AI assistant is ready.</p>
         </div>
       </div>
     </div>
 
     <div class="callout warn">
-      <strong>⚠️ Important note on model aliases:</strong> DeepSeek occasionally remaps the model alias <code>deepseek-chat</code> (V3) to newer models (V4 Flash) on their backend. This means you could be billed at <strong>V4 Flash rates (~3x more)</strong> while your config still says <code>deepseek-chat</code>. To be safe and transparent, set the <strong>explicit model ID</strong>:
-      <div class="cmd-block" style="margin-top:8px;">
-hermes config set model.default deepseek-v4-flash
-      </div>
-      <p style="margin-top:4px;">If you want the absolute best model (stronger reasoning):</p>
-      <div class="cmd-block">
-hermes config set model.default deepseek-v4-pro
-      </div>
-      <p style="margin-top:4px;">Check your actual usage on <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--orange);">DeepSeek's dashboard</a> to verify which model was served.</p>
+      <strong>⚠️ Important note on model aliases:</strong> DeepSeek sometimes silently upgrades the <code>deepseek-chat</code> alias to a newer, more expensive model on their backend. To avoid surprises, use the <strong>explicit model name</strong> instead. We recommend <code>deepseek-v4-flash</code> — it's the best value and you'll know exactly what you're paying for. Check your actual usage at <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--orange);">platform.deepseek.com/usage</a>.
     </div>
   </section>
 
   <!-- 6. HOLOGRAPHIC MEMORY -->
   <section id="memory">
-    <h2><span class="emoji">🧠</span> Holographic Memory Setup</h2>
-    <p class="sub">This is what makes Hermes remember you across sessions — your name, preferences, past conversations, and learned facts. <strong>Runs entirely on your local machine.</strong></p>
+    <h2><span class="emoji">🧠</span> Memory — So Hermes Never Forgets</h2>
+    <p class="sub">This is what makes Hermes different from ChatGPT or Claude: it remembers your name, preferences, past work, and learned facts across sessions. And it's all stored <strong>locally on your machine</strong>, not in the cloud.</p>
 
     <div class="card-grid">
       <div class="card">
         <span class="icon">📝</span>
         <h3>Built-in Memory (Default)</h3>
-        <p>Saves key facts as text at the top of the system prompt. Simple, works well, but limited to ~2,200 characters. Good enough for preferences and quick notes.</p>
+        <p>Hermes saves key facts as notes and reads them at the start of every session. Simple and effective — remembers your name, preferences, and important details. ~2,200 character limit, enough for the essentials.</p>
       </div>
       <div class="card">
         <span class="icon">🧬</span>
         <h3>Holographic Memory (Advanced)</h3>
-        <p>Uses a local SQLite database with entity resolution, trust scoring, and semantic search. No character limit, remembers structured facts, and can reason across multiple entities. <strong>Runs 100% locally.</strong></p>
+        <p>Uses a local database with entity resolution, trust scoring, and search. No character limit, remembers structured facts, and can reason across multiple entities. <strong>Runs entirely locally.</strong> You can enable it in Settings.</p>
       </div>
     </div>
 
-    <h3>Enable Holographic Memory</h3>
+    <h3>Using Memory Day-to-Day</h3>
+    <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:14px;">
+      In the Hermes Desktop chat, just tell Hermes what to remember. It works like natural conversation:
+    </p>
+
+    <div class="card-grid" style="grid-template-columns:1fr 1fr;">
+      <div class="cmd-block" style="font-size:.82rem;margin:0;">
+"Remember that my name is Maher and I work at FES NGO"
+      </div>
+      <div class="cmd-block" style="font-size:.82rem;margin:0;">
+"Our donor prefers email over phone calls"
+      </div>
+      <div class="cmd-block" style="font-size:.82rem;margin:0;">
+"The quarterly report template is in our shared drive"
+      </div>
+      <div class="cmd-block" style="font-size:.82rem;margin:0;">
+"What did I ask you about yesterday?"
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">Enable Holographic Memory (Optional)</h3>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Check Current Memory Status</h3>
-          <div class="cmd-block">
-hermes memory status
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
+          <h3>Go to Settings → Memory</h3>
+          <p>In Hermes Desktop, open Settings and find the <strong>Memory</strong> section.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h3>Configure Holographic Memory Provider</h3>
-          <p>Edit your config (<code>hermes config edit</code>) and add or update:</p>
-          <div class="cmd-block">
-memory:
-  memory_enabled: true
-  user_profile_enabled: true
-  provider: holographic
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
+          <h3>Switch Provider to Holographic</h3>
+          <p>In the memory provider dropdown, select <strong>Holographic</strong> instead of "Built-in". Save the setting, then restart Hermes Desktop for the change to take effect.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>Restart and Test</h3>
-          <p>Exit and restart Hermes:</p>
-          <div class="cmd-block">
-hermes
-
-# Then inside the session, test it:
-"Remember that my name is [your name] and I work for FES NGO"
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>In the next session, Hermes will remember who you are.</p>
+          <h3>Test It</h3>
+          <p>Tell Hermes something, close the app, reopen it, and ask about it. It will remember.</p>
         </div>
       </div>
     </div>
 
-    <h3>How Holographic Memory Works</h3>
+    <h3>How Memory Works</h3>
     <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:14px;">
-      Unlike the built-in memory (which stores plain text notes), Holographic Memory stores structured facts with <strong>entity resolution</strong> — it knows that "Samer at FES" and "the person who asked about the report" are the same entity. It uses <strong>trust scoring</strong> to learn which facts are reliable and which are outdated. And it can <strong>reason across entities</strong>: "What does Samer know about WhatsApp?"
+      Built-in memory stores simple text notes. Holographic Memory stores structured facts with <strong>entity resolution</strong> — it knows that "Maher at FES" and "the person who asked about the report" are the same entity. It uses <strong>trust scoring</strong> to learn which facts are reliable. It can even <strong>reason across entities</strong>: "What does Maher know about our donors?"
     </p>
 
     <div class="table-wrap">
@@ -610,7 +583,7 @@ hermes
         </tr>
         <tr>
           <td>Storage</td>
-          <td>2,200 character limit</td>
+          <td>~2,200 character limit</td>
           <td>Unlimited SQLite database</td>
         </tr>
         <tr>
@@ -629,45 +602,41 @@ hermes
           <td>Trust scoring per fact</td>
         </tr>
         <tr>
-          <td>Offline</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes (local SQLite)</td>
+          <td>Stored where?</td>
+          <td>✅ Your machine</td>
+          <td>✅ Your machine (local SQLite)</td>
         </tr>
         <tr>
-          <td>Provider</td>
-          <td>Built-in (always on)</td>
-          <td><code>holographic</code> (configurable)</td>
+          <td>How to enable</td>
+          <td>Default (always on)</td>
+          <td>Settings → Memory → Holographic</td>
         </tr>
       </table>
     </div>
 
     <div class="callout purple">
-      <strong>🔑 Key point:</strong> With Holographic Memory, Hermes can remember <em>everything</em> about your work — donor preferences, reporting templates, meeting notes from weeks ago, communication styles for each partner, and recurring tasks. It's like having an assistant who never forgets. And the memory <strong>runs locally on your machine</strong> — it never touches the cloud, not DeepSeek or any provider.
+      <strong>🔑 Why this matters for your work:</strong> With memory enabled, Hermes can remember <em>everything</em> about your NGO work — donor preferences, reporting templates, past meeting notes, communication styles for each partner, and recurring tasks. It's like having a colleague who remembers everything you've ever discussed.
     </div>
   </section>
 
   <!-- 7. DAY-TO-DAY RUNNING -->
   <section id="run">
-    <h2><span class="emoji">🚀</span> Day-to-Day: Running Your Cloud Setup</h2>
-    <p class="sub">Once installed, here's what daily use looks like. No GPU, no local model — just open Hermes and start working.</p>
+    <h2><span class="emoji">🚀</span> Using Hermes Every Day</h2>
+    <p class="sub">Once setup is done, daily use is simple: open the app and start talking.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Open Hermes</h3>
-          <div class="cmd-block">
-hermes
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>That's it. Hermes connects to DeepSeek, loads your memory, and you're ready. No startup sequence, no waiting for a model to load.</p>
+          <h3>Open Hermes Desktop</h3>
+          <p>Double-click the Hermes icon on your desktop or find it in your Start Menu / Applications folder. The app connects to DeepSeek automatically — no waiting for a model to load.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
           <h3>Start Working</h3>
-          <p>Just type what you need:</p>
+          <p>Type what you need, just like talking to a colleague:</p>
           <div class="cmd-block">
 "Draft an email to our partner about the upcoming workshop"
 "Summarize these meeting notes" [paste notes]
@@ -682,62 +651,53 @@ hermes
         <div class="step-num">3</div>
         <div class="step-body">
           <h3>Use It From Your Phone (Optional)</h3>
-          <p>If you want Hermes available on Telegram, WhatsApp, or SMS, run the gateway setup:</p>
-          <div class="cmd-block">
-hermes gateway setup
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>Follow the prompts to connect your messaging platform. After that, you can message Hermes from your phone.</p>
+          <p>Want Hermes on Telegram or WhatsApp too? In Hermes Desktop, go to <strong>Settings → Gateway</strong> and follow the prompts to connect. After that, you can message Hermes from your phone and it will remember everything from your desktop sessions.</p>
         </div>
       </div>
     </div>
 
     <div class="callout green">
-      <strong>💡 Pro tip:</strong> Since DeepSeek works over the internet, you can use Hermes on <strong>any</strong> machine — your work laptop, home PC, even a cheap Chromebook. Just install Hermes, add your API key, and all your memory and preferences are available immediately. No GPU, no downloads, no waiting.
+      <strong>💡 Pro tip:</strong> Since DeepSeek works over the internet, you can install Hermes Desktop on <strong>any</strong> machine — work laptop, home PC, even an old laptop — enter the same API key, and pick up right where you left off. Your memory syncs if you use the built-in memory; for Holographic Memory it stays on the machine you used it on.
     </div>
   </section>
 
-  <!-- 8. WHICH PROVIDER TO PICK -->
+  <!-- 8. WHICH PROVIDER & MODEL -->
   <section id="providers">
     <h2><span class="emoji">🎯</span> Which Provider &amp; Model Should You Use?</h2>
-    <p class="sub">DeepSeek offers several models. Here's how they compare and which to pick.</p>
+    <p class="sub">You have options for how to connect. Here's what we recommend.</p>
 
-    <h3>✅ Providers That Support DeepSeek</h3>
+    <h3>✅ Provider Options</h3>
     <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:14px;">
-      Hermes natively supports <strong>DeepSeek Direct</strong> (<code>api.deepseek.com</code>) as a built-in provider. You can also use DeepSeek models through other providers that offer them:
+      Hermes supports DeepSeek natively. You can also use DeepSeek models through other providers if you prefer one key for multiple models.
     </p>
 
     <div class="table-wrap">
       <table>
         <tr>
           <th>Provider</th>
-          <th>Endpoint</th>
           <th>Setup</th>
-          <th>Notes</th>
+          <th>Why Choose It</th>
         </tr>
         <tr>
           <td><strong>🌐 DeepSeek Direct</strong></td>
-          <td><code>api.deepseek.com</code></td>
-          <td>Sign up → API key → <code>hermes auth add deepseek</code></td>
-          <td><strong>Recommended.</strong> Lowest cost, direct access, fastest.</td>
+          <td>Sign up → API key → paste in Hermes</td>
+          <td><strong>⭐ Recommended.</strong> Lowest cost, direct access, fastest responses.</td>
         </tr>
         <tr>
           <td><strong>🎯 OpenRouter</strong></td>
-          <td><code>openrouter.ai/api/v1</code></td>
-          <td>Sign up → Create API key → Configure in Hermes</td>
-          <td>Accesses DeepSeek + many other models via one key. Great for testing different models.</td>
+          <td>Sign up → API key → choose "DeepSeek" model</td>
+          <td>One key gives you access to many models. Useful if you want to switch between DeepSeek, Claude, GPT, etc. without changing keys.</td>
         </tr>
         <tr>
           <td><strong>🤖 Together AI</strong></td>
-          <td><code>api.together.xyz/v1</code></td>
-          <td>Sign up → API key → Custom endpoint config</td>
-          <td>Hosts DeepSeek models with good speed. Also hosts open-source models.</td>
+          <td>Sign up → API key → custom endpoint in Hermes</td>
+          <td>Fast hosting for DeepSeek and open-source models. Good alternative if DeepSeek Direct is slow in your region.</td>
         </tr>
       </table>
     </div>
 
     <div class="callout">
-      <strong>🏆 Recommendation for most users:</strong> <strong>DeepSeek Direct</strong> — sign up at <a href="https://platform.deepseek.com" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com</a>, get an API key, and set Hermes to use <code>deepseek-v4-flash</code>. Best value for NGO work.
+      <strong>🏆 Our recommendation:</strong> Start with <strong>DeepSeek Direct</strong> using model <code>deepseek-v4-flash</code>. Best value, simplest setup. If you want access to other models (Claude, GPT) from the same interface, switch to OpenRouter.
     </div>
 
     <h3 style="margin-top:24px;">DeepSeek Model Comparison</h3>
@@ -754,19 +714,19 @@ hermes gateway setup
           <td><code>deepseek-v4-flash</code></td>
           <td>$0.435</td>
           <td>$0.87</td>
-          <td><strong>⭐ Best value.</strong> Daily emails, reports, summaries, chat. Fast &amp; capable.</td>
+          <td><strong>⭐ Best value.</strong> Daily emails, reports, summaries, chat. Fast &amp; capable. ~$0.30–0.80/day for regular NGO use.</td>
         </tr>
         <tr>
-          <td><code>deepseek-chat</code> (V3, legacy)</td>
+          <td><code>deepseek-chat</code> (V3)</td>
           <td>$0.14</td>
           <td>$0.28</td>
-          <td>Cheapest option. Good for simple tasks. Note: DeepSeek may silently upgrade this alias to V4 Flash.</td>
+          <td>Cheapest option. Note: DeepSeek may silently upgrade this to V4 Flash and charge you more.</td>
         </tr>
         <tr>
           <td><code>deepseek-v4-pro</code></td>
           <td>$1.74</td>
           <td>$3.48</td>
-          <td>Strongest reasoning. For complex analysis, long documents, deep research.</td>
+          <td>Strongest reasoning. For complex analysis, long documents, deep research. Use sparingly.</td>
         </tr>
         <tr>
           <td><code>deepseek-reasoner</code> (R1)</td>
@@ -778,45 +738,45 @@ hermes gateway setup
     </div>
 
     <div class="callout warn">
-      <strong>⚠️ Model alias warning:</strong> DeepSeek sometimes remaps <code>deepseek-chat</code> to a newer model on their backend without changing its name. Always check <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--orange);">platform.deepseek.com/usage</a> to see what model you're <em>actually</em> being billed for. For full transparency, use the explicit model IDs (<code>deepseek-v4-flash</code> or <code>deepseek-v4-pro</code>).
+      <strong>📊 Want to track your spending?</strong> Go to <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--orange);">platform.deepseek.com/usage</a> to see exactly what you're being charged for. If you use <code>deepseek-chat</code> and see higher costs than expected, DeepSeek may have upgraded the alias server-side — switch to <code>deepseek-v4-flash</code> for full transparency.
     </div>
   </section>
 
   <!-- 9. TROUBLESHOOTING -->
   <section id="troubleshoot">
     <h2><span class="emoji">🔧</span> Troubleshooting</h2>
-    <p class="sub">Common issues with cloud-based setup and how to fix them.</p>
+    <p class="sub">Common issues and how to fix them — no technical knowledge needed.</p>
 
     <div class="card-grid">
       <div class="card">
         <span class="icon">🔑</span>
-        <h3>"Authentication failed" or "Invalid API key"</h3>
-        <p>Your API key is incorrect or expired. Generate a new one at <a href="https://platform.deepseek.com/api-keys" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/api-keys</a> and update it with <code>hermes auth add deepseek</code>.</p>
+        <h3>"Invalid API key" or "Auth failed"</h3>
+        <p>Your key is wrong or expired. Go back to <a href="https://platform.deepseek.com/api-keys" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/api-keys</a>, generate a new one, and paste it in Hermes Settings → Model → API Key.</p>
       </div>
       <div class="card">
         <span class="icon">💰</span>
-        <h3>"Insufficient balance" error</h3>
-        <p>You've run out of credits. Top up at DeepSeek Platform → Billing. $5 usually lasts a month for daily NGO use.</p>
+        <h3>"Insufficient balance"</h3>
+        <p>You've run out of credits. Go to DeepSeek Platform → Billing → Top Up. Adding $5 usually lasts a month for daily use.</p>
       </div>
       <div class="card">
         <span class="icon">🌐</span>
-        <h3>"Connection refused" / Network error</h3>
-        <p>Check your internet connection. The API endpoint should be <code>https://api.deepseek.com/v1</code>. If you're behind a corporate firewall or VPN, you may need to whitelist <code>api.deepseek.com</code>.</p>
+        <h3>No response / "Connection failed"</h3>
+        <p>Check your internet connection. If you're at an office with a firewall, you may need to ask your IT team to whitelist <code>api.deepseek.com</code>.</p>
       </div>
       <div class="card">
         <span class="icon">💸</span>
         <h3>Costs higher than expected</h3>
-        <p>DeepSeek may have silently upgraded your <code>deepseek-chat</code> alias to a more expensive model. Set the explicit model: <code>hermes config set model.default deepseek-v4-flash</code>. Check usage at <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/usage</a>.</p>
+        <p>DeepSeek may have upgraded your model alias. Set the explicit model to <code>deepseek-v4-flash</code> in Settings → Model. Check usage at <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/usage</a>.</p>
       </div>
       <div class="card">
         <span class="icon">🐢</span>
         <h3>Slow responses</h3>
-        <p>Usually a network issue. Check your connection speed. Sometimes DeepSeek's servers are under load — wait a moment and try again. If persistent, try a different model.</p>
+        <p>Usually a network issue. Check your internet speed. If it's persistent, try connecting via OpenRouter instead (sign up, get a key, use it as your provider in Hermes).</p>
       </div>
       <div class="card">
         <span class="icon">❓</span>
-        <h3>"Provider not available" in Hermes</h3>
-        <p>Run <code>hermes doctor</code> to check your config. Make sure <code>provider: deepseek</code> is set correctly in config.yaml and your API key is saved.</p>
+        <h3>Hermes Desktop won't open / crashes</h3>
+        <p>Restart your computer and try again. If it still doesn't work, uninstall and reinstall from <a href="https://hermes-agent.nousresearch.com" target="_blank" rel="noopener" style="color:var(--accent)">hermes-agent.nousresearch.com</a>.</p>
       </div>
     </div>
 
@@ -824,13 +784,14 @@ hermes gateway setup
       <strong>🛑 Still stuck?</strong> The official docs always have the latest info:<br>
       • <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener" style="color:var(--accent)">Hermes Agent Docs</a><br>
       • <a href="https://api-docs.deepseek.com" target="_blank" rel="noopener" style="color:var(--accent)">DeepSeek API Docs</a><br>
-      • Or ask Hermes itself: <code>hermes chat -q "How do I fix the DeepSeek connection?"</code>
+      • Or ask Hermes itself — "How do I fix the DeepSeek connection?"<br>
+      • Or message Samer — he knows this setup inside out.
     </div>
   </section>
 
   <!-- FOOTER -->
   <div class="footer">
-    <strong>Hermes + DeepSeek Cloud Setup Guide</strong> — Built by Samer's Hermes Agent for his friends.<br>
+    <strong>Hermes + DeepSeek Setup Guide</strong> — No terminal, no GPU, just an API key and 5 minutes.<br>
     Hermes Agent is an open-source project by <a href="https://nousresearch.com" target="_blank" rel="noopener">Nous Research</a>.<br>
     DeepSeek by <a href="https://deepseek.com" target="_blank" rel="noopener">DeepSeek Inc.</a> | <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener">Hermes Agent Docs</a><br>
     <a href="./agents.html" style="color:var(--accent);text-decoration:none;">🤖 View Agent Collection →</a>
