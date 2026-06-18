@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Offline AI Agent Setup — Local LLM + Hermes + Holographic Memory</title>
+<title>AI Agent Setup — DeepSeek Cloud + Hermes + Holographic Memory</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -240,21 +240,21 @@
 <div class="sidebar-overlay" id="overlay"></div>
 
 <aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo"><span>⚡</span> Local AI Agent</div>
+  <div class="sidebar-logo"><span>⚡</span> Hermes + DeepSeek</div>
   <nav>
     <div class="nav-label">Overview</div>
     <a href="#overview"><span class="emoji">🏗️</span> The Big Picture</a>
-    <a href="#specs"><span class="emoji">💻</span> Your Machine</a>
+    <a href="#prepare"><span class="emoji">📋</span> What You Need</a>
 
     <div class="nav-label">Setup</div>
-    <a href="#ollama"><span class="emoji">🦙</span> Install Ollama + LLM</a>
+    <a href="#apikey"><span class="emoji">🔑</span> Get Your DeepSeek API Key</a>
     <a href="#hermes"><span class="emoji">⚡</span> Install Hermes Agent</a>
-    <a href="#connect"><span class="emoji">🔗</span> Connect Hermes → LLM</a>
+    <a href="#connect"><span class="emoji">🔗</span> Connect Hermes → DeepSeek</a>
 
     <div class="nav-label">Advanced</div>
     <a href="#memory"><span class="emoji">🧠</span> Holographic Memory</a>
     <a href="#run"><span class="emoji">🚀</span> Day-to-Day Running</a>
-    <a href="#which-model"><span class="emoji">🎯</span> Which Model to Pick</a>
+    <a href="#providers"><span class="emoji">🎯</span> Which Provider to Pick</a>
 
     <div class="nav-label">Reference</div>
     <a href="#troubleshoot"><span class="emoji">🔧</span> Troubleshooting</a>
@@ -271,22 +271,21 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="badge">🔒 100% Offline — No API Keys, No Monthly Fees</div>
-    <h1>Run Hermes Agent <span>Fully Offline</span> on Your PC</h1>
-    <p>Turn your powerful machine into a private AI agent that never phones home. Local LLM + Hermes Agent + Holographic Memory = a persistent, intelligent assistant that runs entirely on your hardware.</p>
+    <div class="badge">☁️ Cloud AI — No GPU Needed, Just an API Key</div>
+    <h1>Run Hermes Agent with <span>DeepSeek Cloud</span></h1>
+    <p>Turn your laptop into an intelligent AI assistant in 15 minutes. No GPU required, no local LLM to install — just sign up, get an API key, and start working with a persistent AI agent that remembers everything.</p>
     <div class="specs">
-      <span class="chip highlight">Intel i9-14900K</span>
-      <span class="chip highlight">RTX 5080 16GB</span>
-      <span class="chip highlight">32GB RAM</span>
-      <span class="chip">No internet needed</span>
-      <span class="chip">No monthly bills</span>
+      <span class="chip highlight">Any laptop</span>
+      <span class="chip highlight">No GPU needed</span>
+      <span class="chip">~$5–15/month</span>
+      <span class="chip">DeepSeek V4 / V3 / R1</span>
     </div>
   </div>
 
   <!-- 1. THE BIG PICTURE -->
   <section id="overview">
     <h2><span class="emoji">🏗️</span> The Big Picture</h2>
-    <p class="sub">Three components that work together to give you a private, always-available AI assistant.</p>
+    <p class="sub">Three components that work together to give you a persistent, cloud-powered AI assistant.</p>
 
     <div class="arch-diagram">
       <div class="arch-step">
@@ -302,9 +301,9 @@
       </div>
       <div class="arch-arrow">→</div>
       <div class="arch-step">
-        <span class="icon">🦙</span>
-        <div class="label">Local LLM</div>
-        <div class="sub">Ollama + llama.cpp</div>
+        <span class="icon">☁️</span>
+        <div class="label">DeepSeek Cloud</div>
+        <div class="sub">Powerful LLM via API</div>
       </div>
       <div class="arch-arrow">→</div>
       <div class="arch-step">
@@ -316,153 +315,119 @@
 
     <div class="card-grid">
       <div class="card">
-        <span class="icon">🦙</span>
-        <h3>Local LLM (Ollama)</h3>
-        <p>A powerful language model runs on your RTX 5080. No cloud, no API calls, no monthly cost. Your RTX 5080 16GB can run models up to ~70B parameters with good speeds.</p>
+        <span class="icon">☁️</span>
+        <h3>DeepSeek Cloud API</h3>
+        <p>DeepSeek's latest models (V4 Flash, V4 Pro, R1) run on their servers — you just call the API. No downloads, no GPU required. Pay only for what you use (cache hits cost pennies).</p>
       </div>
       <div class="card">
         <span class="icon">⚡</span>
         <h3>Hermes Agent</h3>
-        <p>The AI agent framework that uses the LLM to think, reason, and take action — write files, run commands, browse the web, manage tasks. Connects to any local LLM via OpenAI-compatible API.</p>
+        <p>The AI agent framework that uses DeepSeek to think, reason, and take action — write files, run commands, manage tasks, remember your preferences. Connects via a single API key.</p>
       </div>
       <div class="card">
         <span class="icon">🧠</span>
         <h3>Holographic Memory</h3>
-        <p>Durable memory across sessions — Hermes remembers your preferences, past conversations, completed tasks, and learned knowledge. Queries facts by entity, reasons across them, and improves over time.</p>
+        <p>Durable memory across sessions — Hermes remembers your name, preferences, past conversations, completed tasks, and learned facts. Uses entity resolution and trust scoring to get smarter over time.</p>
       </div>
     </div>
 
     <div class="callout green">
-      <strong>✅ The result:</strong> Open your terminal, type <code>hermes</code>, and talk to a persistent AI assistant that is 100% offline, knows your history, runs NGO reports, drafts emails, summarizes meetings, and never costs a cent after setup.
+      <strong>✅ The result:</strong> Open your terminal, type <code>hermes</code>, and talk to a persistent AI assistant that runs on DeepSeek's powerful models, knows your history, drafts NGO reports, summarizes meetings, and costs about the same as a streaming subscription.
     </div>
   </section>
 
-  <!-- 2. YOUR MACHINE -->
-  <section id="specs">
-    <h2><span class="emoji">💻</span> Your Machine — What It Can Run</h2>
-    <p class="sub">Your Intel i9-14900K + RTX 5080 16GB + 32GB RAM is an excellent setup for local AI.</p>
+  <!-- 2. WHAT YOU NEED -->
+  <section id="prepare">
+    <h2><span class="emoji">📋</span> What You Need Before Starting</h2>
+    <p class="sub">Nothing special — just a laptop and 15 minutes. No GPU, no local LLM, no technical setup.</p>
 
-    <div class="table-wrap">
-      <table>
-        <tr>
-          <th>Component</th>
-          <th>Your Spec</th>
-          <th>Why It Matters</th>
-        </tr>
-        <tr>
-          <td>💻 CPU</td>
-          <td>Intel i9-14900K (24 cores / 32 threads)</td>
-          <td>Handles prompt processing, context management, and model loading. Plenty for any local model.</td>
-        </tr>
-        <tr>
-          <td>🎮 GPU</td>
-          <td>NVIDIA RTX 5080 — 16GB VRAM</td>
-          <td><strong>The key component.</strong> Runs the LLM at high speed. 16GB VRAM fits Q4 quantized models up to ~70B parameters.</td>
-        </tr>
-        <tr>
-          <td>🧠 RAM</td>
-          <td>32GB DDR5</td>
-          <td>Plenty for Hermes, system, and the model. More RAM = larger context windows.</td>
-        </tr>
-        <tr>
-          <td>💾 Storage</td>
-          <td>NVMe SSD (likely)</td>
-          <td>Models load quickly. A 70B Q4 model is about 40-45GB on disk.</td>
-        </tr>
-      </table>
-    </div>
+    <ul class="checklist">
+      <li><span class="emoji">💻</span> <strong>A computer</strong> — Windows, Mac, or Linux. Any laptop works.</li>
+      <li><span class="emoji">📶</span> <strong>Internet connection</strong> — your AI runs in the cloud, so you need a connection to use it.</li>
+      <li><span class="emoji">🔑</span> <strong>A DeepSeek API key</strong> — free to create, costs a few dollars per month depending on usage. We'll walk through getting one below.</li>
+      <li><span class="emoji">📱</span> <strong>Optional:</strong> Telegram or WhatsApp account to use Hermes from your phone.</li>
+    </ul>
 
     <div class="callout">
-      <strong>🎯 What this means for model size:</strong><br>
-      • <strong>Q4 quant (~4.5 bits/param):</strong> fits up to 20B-24B models entirely in VRAM (fastest)<br>
-      • <strong>Q4 quant with partial offload:</strong> up to 70B models (some layers on GPU, some on CPU — still usable)<br>
-      • <strong>Q2-KM / IQ3 quant:</strong> 70B fits in VRAM with lower quality but still very usable<br>
-      • <strong>Best practical fit:</strong> A 20B-24B model in Q4_K_M — fits entirely in 16GB VRAM with room for context
+      <strong>💰 Estimated monthly cost:</strong> For daily NGO work — drafting emails, summarizing meetings, reports — expect <strong>$5–15/month</strong> with DeepSeek. That's less than a streaming subscription. DeepSeek V4 Flash ($0.435/M input tokens) is the best value for general use.
     </div>
   </section>
 
-  <!-- 3. INSTALL OLLAMA + LLM -->
-  <section id="ollama">
-    <h2><span class="emoji">🦙</span> Step 1 — Install Ollama &amp; Download a Model</h2>
-    <p class="sub">Ollama is the easiest way to run local LLMs on Windows. It handles GPU acceleration, model management, and serves an OpenAI-compatible API automatically.</p>
+  <!-- 3. GET YOUR DEEPSEEK API KEY -->
+  <section id="apikey">
+    <h2><span class="emoji">🔑</span> Step 1 — Get Your DeepSeek API Key</h2>
+    <p class="sub">An API key is like a password that lets Hermes talk to DeepSeek's AI models. Here's how to get one.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Download &amp; Install Ollama</h3>
-          <p>Go to <a href="https://ollama.com/download" target="_blank" rel="noopener" style="color:var(--accent)">ollama.com/download</a> and download the Windows installer. Run it — it installs like any normal program. After installation, Ollama runs in the system tray.</p>
-          <div class="cmd-block">
-Verify it works — open a terminal (Command Prompt or PowerShell):
-ollama --version
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
+          <h3>Sign up for a DeepSeek Account</h3>
+          <p>Go to <a href="https://platform.deepseek.com/signup" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/signup</a> and create an account. You can sign up with your email or Google account.</p>
         </div>
       </div>
-
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h3>Download a Model</h3>
-          <p>Pick a model from the list below. The first download takes a few minutes depending on model size. After that, it's cached locally.</p>
-          <div class="cmd-block">
-# For the fastest experience — fits entirely in your RTX 5080 16GB:
-ollama pull qwen2.5:14b-instruct-q4_K_M
-
-# For better quality and still fast:
-ollama pull qwen2.5:32b-instruct-q4_K_M
-
-# For maximum intelligence (largest, uses GPU + CPU):
-ollama pull command-r:35b-v01-q4_K_M
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p style="margin-top:6px;font-size:.82rem;color:var(--text3);">💡 <strong>Recommendation:</strong> Start with <code>qwen2.5:14b</code> to test, then upgrade to <code>32b</code> for better results on your RTX 5080.</p>
+          <h3>Create an API Key</h3>
+          <p>Once logged in:</p>
+          <p style="margin-top:4px;">1. Go to the <strong>API Keys</strong> page (left sidebar → API Keys)</p>
+          <p>2. Click <strong>"Create API Key"</strong></p>
+          <p>3. Give it a name like <code>"Hermes Agent"</code></p>
+          <p>4. Copy the key — it looks like <code>sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></p>
+          <p style="margin-top:6px;font-size:.82rem;color:var(--orange);font-weight:600;">⚠️ Copy it now — you won't be able to see it again after you leave the page!</p>
         </div>
       </div>
-
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>Confirm the Model is Running</h3>
-          <p>Test it with a quick prompt:</p>
+          <h3>Add Credits (Optional)</h3>
+          <p>DeepSeek gives you a small amount of free credits to start. After that, you need to add funds. Go to <strong>Billing</strong> → <strong>Top Up</strong> and add $5–10 to start. That will last you weeks of regular use.</p>
           <div class="cmd-block">
-ollama run qwen2.5:14b-instruct-q4_K_M "What is Hermes Agent?"
+DeepSeek pricing (as of June 2026):
+
+V4 Flash (default):  $0.435 /M input tokens  |  $0.87 /M output
+V4 Pro (stronger):   $1.74  /M input tokens  |  $3.48 /M output
+DeepSeek Chat (V3):  $0.14  /M input tokens  |  $0.28 /M output
+DeepSeek R1 (reason): $0.55 /M input tokens  |  $2.19 /M output
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p>You should get a response. Press <strong>Ctrl+D</strong> to exit when done.</p>
+          <p style="margin-top:6px;font-size:.82rem;color:var(--text3);">💡 <strong>Recommendation:</strong> Start with DeepSeek V4 Flash. It's fast, capable, and the best value. A full day of NGO work might cost $0.30–0.80.</p>
         </div>
       </div>
-
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h3>Keep the API Server Running</h3>
-          <p>Ollama automatically runs a background server at <code>http://localhost:11434</code> once installed. This is the endpoint Hermes will talk to.</p>
+          <h3>Test Your API Key</h3>
+          <p>You can test that your key works with this curl command in your terminal:</p>
           <div class="cmd-block">
-# Test the API directly:
-curl http://localhost:11434/v1/chat/completions -d '{"model":"qwen2.5:14b","messages":[{"role":"user","content":"Hello"}]}'
+curl https://api.deepseek.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer sk-your-key-here" \
+  -d '{"model":"deepseek-chat","messages":[{"role":"user","content":"Hello!"}]}'
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
+          <p style="margin-top:4px;">You should get a JSON response with DeepSeek's reply. If you see an error, double-check your key.</p>
         </div>
       </div>
     </div>
 
     <div class="callout green">
-      <strong>✅ Ollama is now running!</strong> The OpenAI-compatible server at <code>localhost:11434</code> is ready. No internet needed, no API key required.
+      <strong>✅ API key ready!</strong> Keep it safe — treat it like a password. Never share it, never paste it into public forums. We'll add it to Hermes in Step 3.
     </div>
   </section>
 
   <!-- 4. INSTALL HERMES -->
   <section id="hermes">
     <h2><span class="emoji">⚡</span> Step 2 — Install Hermes Agent</h2>
-    <p class="sub">Hermes is the orchestrator that uses the local LLM to take real actions.</p>
+    <p class="sub">Hermes is the orchestrator that uses DeepSeek's AI to take real actions — write files, manage tasks, search the web, and remember your preferences.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
           <h3>Install Node.js</h3>
-          <p>Go to <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--accent)">nodejs.org</a> and download the LTS version. Run the installer — this is required for Hermes to run.</p>
+          <p>Go to <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--accent)">nodejs.org</a> and download the LTS version. Run the installer — this is required for Hermes to run. (If you already have Node.js, skip this step.)</p>
         </div>
       </div>
       <div class="step">
@@ -480,51 +445,65 @@ curl http://localhost:11434/v1/chat/completions -d '{"model":"qwen2.5:14b","mess
 npx hermes-agent setup
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p>Follow the interactive setup. When it asks about a model provider, choose <strong>"Custom endpoint"</strong> — we'll configure it in the next step.</p>
+          <p>Follow the interactive setup. When it asks about your model provider, you can skip for now — we'll configure DeepSeek in the next step.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h3>Check it Works</h3>
+          <h3>Check Everything is Installed</h3>
           <div class="cmd-block">
 hermes doctor
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p>If everything is green, you're ready to connect Hermes to your local model.</p>
+          <p>If everything is green, you're ready to connect Hermes to DeepSeek.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. CONNECT HERMES TO LOCAL LLM -->
+  <!-- 5. CONNECT HERMES TO DEEPSEEK -->
   <section id="connect">
-    <h2><span class="emoji">🔗</span> Step 3 — Connect Hermes to Your Local LLM</h2>
-    <p class="sub">This is the magic step — Hermes sends requests to Ollama instead of a cloud API.</p>
+    <h2><span class="emoji">🔗</span> Step 3 — Connect Hermes to DeepSeek</h2>
+    <p class="sub">This is where the magic happens — Hermes gets its "brain" from DeepSeek's cloud models.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Open Hermes Configuration</h3>
+          <h3>Add Your API Key to Hermes</h3>
+          <p>Run the auth command to securely store your DeepSeek key:</p>
           <div class="cmd-block">
-hermes config edit
+hermes auth add deepseek
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p>This opens the config file in your default text editor.</p>
+          <p>Paste your API key when prompted. Hermes stores it securely in its config.</p>
+          <p style="margin-top:4px;">Alternatively, you can set it directly in the <code>.env</code> file:</p>
+          <div class="cmd-block">
+DEEPSEEK_API_KEY=sk-your-key-here
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h3>Configure the Local Provider</h3>
-          <p>Add or edit these lines under the <code>model</code> section:</p>
+          <h3>Set DeepSeek as Your Provider</h3>
+          <p>Use the interactive model picker:</p>
+          <div class="cmd-block">
+hermes model
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>Select <strong>DeepSeek</strong> as your provider and choose your preferred model. Or set it directly in config:</p>
+          <div class="cmd-block">
+hermes config edit
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>And add or edit these lines:</p>
           <div class="cmd-block">
 model:
-  default: qwen2.5:14b
-  provider: custom
-  base_url: http://localhost:11434/v1
-  api_key: not-needed
+  default: deepseek-chat   # or deepseek-v4-flash, deepseek-v4-pro, deepseek-reasoner
+  provider: deepseek
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
         </div>
@@ -532,37 +511,33 @@ model:
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3>Or use the setup wizard</h3>
-          <p>Alternatively, run the model setup from the terminal:</p>
-          <div class="cmd-block">
-hermes model
-            <button class="copy-btn" onclick="copyText(this)">Copy</button>
-          </div>
-          <p>Select <strong>"Custom endpoint"</strong> → enter <code>http://localhost:11434/v1</code> → set model name to <code>qwen2.5:14b</code> → leave API key blank.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
           <h3>Test the Connection</h3>
           <div class="cmd-block">
-hermes chat -q "Hello, who are you?"
+hermes chat -q "Hello! Who are you and what can you do?"
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p>If you get a response from your local model — congratulations! You now have a fully offline AI agent. 🎉</p>
+          <p>If you get a response from DeepSeek — congratulations! 🎉 You now have Hermes running on cloud AI.</p>
         </div>
       </div>
     </div>
 
     <div class="callout warn">
-      <strong>⚠️ Important:</strong> For the 32B or larger models that don't fully fit in 16GB VRAM, Ollama automatically offloads some layers to CPU + RAM. This is normal. Speed will still be usable — a few seconds per response instead of sub-second. To force more GPU layers, you can set <code>OLLAMA_NUM_GPU=50</code> or similar in environment variables.
+      <strong>⚠️ Important note on model aliases:</strong> DeepSeek occasionally remaps the model alias <code>deepseek-chat</code> (V3) to newer models (V4 Flash) on their backend. This means you could be billed at <strong>V4 Flash rates (~3x more)</strong> while your config still says <code>deepseek-chat</code>. To be safe and transparent, set the <strong>explicit model ID</strong>:
+      <div class="cmd-block" style="margin-top:8px;">
+hermes config set model.default deepseek-v4-flash
+      </div>
+      <p style="margin-top:4px;">If you want the absolute best model (stronger reasoning):</p>
+      <div class="cmd-block">
+hermes config set model.default deepseek-v4-pro
+      </div>
+      <p style="margin-top:4px;">Check your actual usage on <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--orange);">DeepSeek's dashboard</a> to verify which model was served.</p>
     </div>
   </section>
 
   <!-- 6. HOLOGRAPHIC MEMORY -->
   <section id="memory">
     <h2><span class="emoji">🧠</span> Holographic Memory Setup</h2>
-    <p class="sub">This is what makes Hermes remember you across sessions — your name, preferences, past conversations, and learned facts.</p>
+    <p class="sub">This is what makes Hermes remember you across sessions — your name, preferences, past conversations, and learned facts. <strong>Runs entirely on your local machine.</strong></p>
 
     <div class="card-grid">
       <div class="card">
@@ -573,7 +548,7 @@ hermes chat -q "Hello, who are you?"
       <div class="card">
         <span class="icon">🧬</span>
         <h3>Holographic Memory (Advanced)</h3>
-        <p>Uses a local SQLite database with entity resolution, trust scoring, and semantic search. No character limit, remembers structured facts, and can reason across multiple entities. <strong>Runs 100% offline.</strong></p>
+        <p>Uses a local SQLite database with entity resolution, trust scoring, and semantic search. No character limit, remembers structured facts, and can reason across multiple entities. <strong>Runs 100% locally.</strong></p>
       </div>
     </div>
 
@@ -667,36 +642,29 @@ hermes
     </div>
 
     <div class="callout purple">
-      <strong>🔑 Key point for his use case:</strong> With Holographic Memory, Hermes can remember <em>everything</em> about his NGO work — donor preferences, reporting templates, meeting notes from weeks ago, communication styles for each partner, and recurring tasks. It's like having an assistant who never forgets.
+      <strong>🔑 Key point:</strong> With Holographic Memory, Hermes can remember <em>everything</em> about your work — donor preferences, reporting templates, meeting notes from weeks ago, communication styles for each partner, and recurring tasks. It's like having an assistant who never forgets. And the memory <strong>runs locally on your machine</strong> — it never touches the cloud, not DeepSeek or any provider.
     </div>
   </section>
 
   <!-- 7. DAY-TO-DAY RUNNING -->
   <section id="run">
-    <h2><span class="emoji">🚀</span> Day-to-Day: Running Your Offline Setup</h2>
-    <p class="sub">Once everything is installed, here's what daily use looks like.</p>
+    <h2><span class="emoji">🚀</span> Day-to-Day: Running Your Cloud Setup</h2>
+    <p class="sub">Once installed, here's what daily use looks like. No GPU, no local model — just open Hermes and start working.</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Boot — Start Ollama</h3>
-          <p>Ollama auto-starts with Windows (runs in system tray). If not, launch it from the Start Menu. The API server at <code>localhost:11434</code> will be ready in a few seconds.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
         <div class="step-body">
           <h3>Open Hermes</h3>
           <div class="cmd-block">
 hermes
             <button class="copy-btn" onclick="copyText(this)">Copy</button>
           </div>
-          <p>This opens the interactive chat. Your local model loads and responds. The holographic memory is automatically available.</p>
+          <p>That's it. Hermes connects to DeepSeek, loads your memory, and you're ready. No startup sequence, no waiting for a model to load.</p>
         </div>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
+        <div class="step-num">2</div>
         <div class="step-body">
           <h3>Start Working</h3>
           <p>Just type what you need:</p>
@@ -710,118 +678,161 @@ hermes
           </div>
         </div>
       </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Use It From Your Phone (Optional)</h3>
+          <p>If you want Hermes available on Telegram, WhatsApp, or SMS, run the gateway setup:</p>
+          <div class="cmd-block">
+hermes gateway setup
+            <button class="copy-btn" onclick="copyText(this)">Copy</button>
+          </div>
+          <p>Follow the prompts to connect your messaging platform. After that, you can message Hermes from your phone.</p>
+        </div>
+      </div>
     </div>
 
     <div class="callout green">
-      <strong>💡 Pro tip:</strong> Add Ollama to Windows Startup so it's always ready. In Ollama settings (system tray icon → right-click), there's an option to "Run on startup." Same for Hermes gateway if you want it always available.
+      <strong>💡 Pro tip:</strong> Since DeepSeek works over the internet, you can use Hermes on <strong>any</strong> machine — your work laptop, home PC, even a cheap Chromebook. Just install Hermes, add your API key, and all your memory and preferences are available immediately. No GPU, no downloads, no waiting.
     </div>
   </section>
 
-  <!-- 8. WHICH MODEL TO PICK -->
-  <section id="which-model">
-    <h2><span class="emoji">🎯</span> Which Model Should He Use?</h2>
-    <p class="sub">A practical guide based on his RTX 5080 16GB + 32GB RAM.</p>
+  <!-- 8. WHICH PROVIDER TO PICK -->
+  <section id="providers">
+    <h2><span class="emoji">🎯</span> Which Provider &amp; Model Should You Use?</h2>
+    <p class="sub">DeepSeek offers several models. Here's how they compare and which to pick.</p>
+
+    <h3>✅ Providers That Support DeepSeek</h3>
+    <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:14px;">
+      Hermes natively supports <strong>DeepSeek Direct</strong> (<code>api.deepseek.com</code>) as a built-in provider. You can also use DeepSeek models through other providers that offer them:
+    </p>
 
     <div class="table-wrap">
       <table>
         <tr>
-          <th>Model</th>
-          <th>Size (Q4)</th>
-          <th>Fits RTX 5080?</th>
-          <th>Speed</th>
-          <th>Best For</th>
+          <th>Provider</th>
+          <th>Endpoint</th>
+          <th>Setup</th>
+          <th>Notes</th>
         </tr>
         <tr>
-          <td><strong>Qwen 2.5 14B</strong> (Q4_K_M)</td>
-          <td>~8.5 GB</td>
-          <td>✅ Full GPU</td>
-          <td>⚡ Very Fast</td>
-          <td>Starting out, daily use, fast responses</td>
+          <td><strong>🌐 DeepSeek Direct</strong></td>
+          <td><code>api.deepseek.com</code></td>
+          <td>Sign up → API key → <code>hermes auth add deepseek</code></td>
+          <td><strong>Recommended.</strong> Lowest cost, direct access, fastest.</td>
         </tr>
         <tr>
-          <td><strong>Qwen 2.5 32B</strong> (Q4_K_M)</td>
-          <td>~19 GB</td>
-          <td>🟡 Mostly GPU (some CPU)</td>
-          <td>⚡ Fast</td>
-          <td>Better reasoning, coding, complex tasks</td>
+          <td><strong>🎯 OpenRouter</strong></td>
+          <td><code>openrouter.ai/api/v1</code></td>
+          <td>Sign up → Create API key → Configure in Hermes</td>
+          <td>Accesses DeepSeek + many other models via one key. Great for testing different models.</td>
         </tr>
         <tr>
-          <td><strong>DeepSeek Coder V2 Lite</strong> (16B, Q4)</td>
-          <td>~10 GB</td>
-          <td>✅ Full GPU</td>
-          <td>⚡ Very Fast</td>
-          <td>Coding, technical work, structured outputs</td>
-        </tr>
-        <tr>
-          <td><strong>Command R 35B</strong> (Q4_K_M)</td>
-          <td>~20 GB</td>
-          <td>🟡 Mostly GPU (some CPU)</td>
-          <td>⚡ Fast</td>
-          <td>Long context, complex instructions, writing</td>
-        </tr>
-        <tr>
-          <td><strong>Mistral Small 22B</strong> (Q4_K_M)</td>
-          <td>~13 GB</td>
-          <td>✅ Full GPU</td>
-          <td>⚡ Very Fast</td>
-          <td>Chat, general assistant, NGO tasks</td>
-        </tr>
-        <tr>
-          <td><strong>Llama 3.1 70B</strong> (Q2-KM / IQ3)</td>
-          <td>~28 GB / ~35 GB</td>
-          <td>❌ CPU + GPU hybrid</td>
-          <td>🐢 Slower</td>
-          <td>Maximum intelligence, but needs patience</td>
+          <td><strong>🤖 Together AI</strong></td>
+          <td><code>api.together.xyz/v1</code></td>
+          <td>Sign up → API key → Custom endpoint config</td>
+          <td>Hosts DeepSeek models with good speed. Also hosts open-source models.</td>
         </tr>
       </table>
     </div>
 
     <div class="callout">
-      <strong>🏆 Recommendation:</strong> Start with <strong>Qwen 2.5 32B (Q4_K_M)</strong>. It's the sweet spot between intelligence and speed on a 16GB card — most layers fit in VRAM, CPU handles the rest. For day-to-day NGO work (emails, reports, summaries), it's more than capable and responds in 2-5 seconds.
+      <strong>🏆 Recommendation for most users:</strong> <strong>DeepSeek Direct</strong> — sign up at <a href="https://platform.deepseek.com" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com</a>, get an API key, and set Hermes to use <code>deepseek-v4-flash</code>. Best value for NGO work.
+    </div>
+
+    <h3 style="margin-top:24px;">DeepSeek Model Comparison</h3>
+
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Model Config Name</th>
+          <th>Input / 1M tokens</th>
+          <th>Output / 1M tokens</th>
+          <th>Best For</th>
+        </tr>
+        <tr>
+          <td><code>deepseek-v4-flash</code></td>
+          <td>$0.435</td>
+          <td>$0.87</td>
+          <td><strong>⭐ Best value.</strong> Daily emails, reports, summaries, chat. Fast &amp; capable.</td>
+        </tr>
+        <tr>
+          <td><code>deepseek-chat</code> (V3, legacy)</td>
+          <td>$0.14</td>
+          <td>$0.28</td>
+          <td>Cheapest option. Good for simple tasks. Note: DeepSeek may silently upgrade this alias to V4 Flash.</td>
+        </tr>
+        <tr>
+          <td><code>deepseek-v4-pro</code></td>
+          <td>$1.74</td>
+          <td>$3.48</td>
+          <td>Strongest reasoning. For complex analysis, long documents, deep research.</td>
+        </tr>
+        <tr>
+          <td><code>deepseek-reasoner</code> (R1)</td>
+          <td>$0.55</td>
+          <td>$2.19</td>
+          <td>Step-by-step reasoning. Best for math, logic, structured problem-solving.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <strong>⚠️ Model alias warning:</strong> DeepSeek sometimes remaps <code>deepseek-chat</code> to a newer model on their backend without changing its name. Always check <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--orange);">platform.deepseek.com/usage</a> to see what model you're <em>actually</em> being billed for. For full transparency, use the explicit model IDs (<code>deepseek-v4-flash</code> or <code>deepseek-v4-pro</code>).
     </div>
   </section>
 
   <!-- 9. TROUBLESHOOTING -->
   <section id="troubleshoot">
     <h2><span class="emoji">🔧</span> Troubleshooting</h2>
-    <p class="sub">Common issues and how to fix them.</p>
+    <p class="sub">Common issues with cloud-based setup and how to fix them.</p>
 
     <div class="card-grid">
       <div class="card">
-        <span class="icon">❌</span>
-        <h3>Hermes says "Provider not available"</h3>
-        <p>Check that <code>base_url</code> in config.yaml points to <code>http://localhost:11434/v1</code>. Make sure Ollama is running. Test with <code>curl http://localhost:11434</code>.</p>
+        <span class="icon">🔑</span>
+        <h3>"Authentication failed" or "Invalid API key"</h3>
+        <p>Your API key is incorrect or expired. Generate a new one at <a href="https://platform.deepseek.com/api-keys" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/api-keys</a> and update it with <code>hermes auth add deepseek</code>.</p>
+      </div>
+      <div class="card">
+        <span class="icon">💰</span>
+        <h3>"Insufficient balance" error</h3>
+        <p>You've run out of credits. Top up at DeepSeek Platform → Billing. $5 usually lasts a month for daily NGO use.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🌐</span>
+        <h3>"Connection refused" / Network error</h3>
+        <p>Check your internet connection. The API endpoint should be <code>https://api.deepseek.com/v1</code>. If you're behind a corporate firewall or VPN, you may need to whitelist <code>api.deepseek.com</code>.</p>
+      </div>
+      <div class="card">
+        <span class="icon">💸</span>
+        <h3>Costs higher than expected</h3>
+        <p>DeepSeek may have silently upgraded your <code>deepseek-chat</code> alias to a more expensive model. Set the explicit model: <code>hermes config set model.default deepseek-v4-flash</code>. Check usage at <a href="https://platform.deepseek.com/usage" target="_blank" rel="noopener" style="color:var(--accent)">platform.deepseek.com/usage</a>.</p>
       </div>
       <div class="card">
         <span class="icon">🐢</span>
-        <h3>Responses are very slow</h3>
-        <p>Check how many GPU layers are used. Run <code>ollama ps</code> to see. If the model is too big, try a smaller one (14B instead of 32B). Close other GPU apps (browser, games).</p>
+        <h3>Slow responses</h3>
+        <p>Usually a network issue. Check your connection speed. Sometimes DeepSeek's servers are under load — wait a moment and try again. If persistent, try a different model.</p>
       </div>
       <div class="card">
-        <span class="icon">💾</span>
-        <h3>Out of VRAM error</h3>
-        <p>The model is too large for 16GB. Switch to a smaller quant (Q3 or Q2) or a smaller model. Qwen 2.5 14B Q4_K_M will always fit.</p>
-      </div>
-      <div class="card">
-        <span class="icon">🔄</span>
-        <h3>Model not responding</h3>
-        <p>Restart Ollama: right-click tray icon → Quit, then relaunch. Or run <code>ollama serve</code> in a terminal to see logs.</p>
+        <span class="icon">❓</span>
+        <h3>"Provider not available" in Hermes</h3>
+        <p>Run <code>hermes doctor</code> to check your config. Make sure <code>provider: deepseek</code> is set correctly in config.yaml and your API key is saved.</p>
       </div>
     </div>
 
     <div class="callout warn">
-      <strong>🛑 Still stuck?</strong> Check the official docs — they always have the latest info:<br>
+      <strong>🛑 Still stuck?</strong> The official docs always have the latest info:<br>
       • <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener" style="color:var(--accent)">Hermes Agent Docs</a><br>
-      • <a href="https://github.com/ollama/ollama" target="_blank" rel="noopener" style="color:var(--accent)">Ollama GitHub</a><br>
-      • Or ask AI agents to help each other — run <code>hermes chat -q "How do I fix the Hermes-Ollama connection?"</code>
+      • <a href="https://api-docs.deepseek.com" target="_blank" rel="noopener" style="color:var(--accent)">DeepSeek API Docs</a><br>
+      • Or ask Hermes itself: <code>hermes chat -q "How do I fix the DeepSeek connection?"</code>
     </div>
   </section>
 
   <!-- FOOTER -->
   <div class="footer">
-    <strong>Offline AI Agent Setup Guide</strong> — Built by Samer's Hermes Agent for his friend with the RTX 5080.<br>
+    <strong>Hermes + DeepSeek Cloud Setup Guide</strong> — Built by Samer's Hermes Agent for his friends.<br>
     Hermes Agent is an open-source project by <a href="https://nousresearch.com" target="_blank" rel="noopener">Nous Research</a>.<br>
-    Ollama by <a href="https://ollama.com" target="_blank" rel="noopener">Ollama Inc.</a> | <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener">Hermes Agent Docs</a><br>
+    DeepSeek by <a href="https://deepseek.com" target="_blank" rel="noopener">DeepSeek Inc.</a> | <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener">Hermes Agent Docs</a><br>
     <a href="./agents.html" style="color:var(--accent);text-decoration:none;">🤖 View Agent Collection →</a>
   </div>
 
